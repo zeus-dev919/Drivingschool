@@ -1,0 +1,69 @@
+.header {
+  margin: 0 30px;
+  z-index: 1;
+}
+
+.header-container {
+  background-color: #48b1f7;
+  padding-right: 74px;
+  padding-top: 19px;
+  max-width: 1230px;
+  height: 250px;
+}
+
+.header-button {
+  float: right;
+  border-radius: 14px;
+  background-color: #26FF4A;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  width: 118px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.header-top {
+  padding-top: 156px;
+}
+
+.header-main {
+  background-color: rgb(255, 255, 255);
+  max-width: 1110px;
+  height: 150px;
+  margin: auto;
+  z-index: 10;
+}
+
+.header-letter {
+  text-align: left;
+  padding-left: 216px;
+  padding-top: 17px;
+}
+
+.header-title {
+  font-size: 38px;
+  font-family: 'Poppins';
+  letter-spacing: 0px;
+  color: #333333;
+  opacity: 1;
+}
+
+.header-subtitle {
+  font-size: 38px;
+  font-family: 'Segoe  UI';
+  color: #707070;
+  opacity: 1;
+}
+
+.header-logo-container {
+  margin-top: -180px;
+  margin-left: 84px;
+  width: 162px;
+  height: 162px;
+  background-color: #b6dbf3;
+  z-index: 100;
+}
