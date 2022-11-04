@@ -37,6 +37,7 @@
   align-items: center;
   padding: 30px 0;
   margin: auto;
+  cursor: pointer;
 }
 
 .sidebar-menu-icon {

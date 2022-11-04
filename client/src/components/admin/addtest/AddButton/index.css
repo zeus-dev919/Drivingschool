@@ -1,0 +1,28 @@
+.admin-add-button {
+  width: 115px;
+  background-color: #3598DB;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-add-icon-section {
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  opacity: 20%;
+}
+
+.admin-add-icon-img {
+  
+}
+
+.admin-add-txt {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}

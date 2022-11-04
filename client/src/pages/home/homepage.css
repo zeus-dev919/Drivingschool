@@ -4,9 +4,10 @@
   height: 100vh;
 }
 
-h1 {
+.app-title {
   color: white;
   font-size: 72px;
+  padding: 50px;
 }
 
 .button-group {

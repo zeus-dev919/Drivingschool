@@ -11,9 +11,10 @@ const Homepage = () => {
   const userBtnClick = () => {
     navigate('/user')
   }
-  return(
+
+  return (
     <div className='home-page'>
-      <h1>Driving School App</h1>
+      <div className='app-title'>Driving School App</div>
       <div className='button-group'>
         <div className='homepage-button admin' onClick={adminBtnClick}>Admin</div>
         <div className='homepage-button user' onClick={userBtnClick}>User</div>

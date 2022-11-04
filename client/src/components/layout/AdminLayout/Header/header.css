@@ -1,16 +1,17 @@
 .header {
-  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .header-container {
   background-color: #48b1f7;
-  padding-right: 74px;
   padding-top: 19px;
   height: 250px;
 }
 
 .header-button {
   float: right;
+  margin-right: 90px;
   border-radius: 14px;
   background-color: #26FF4A;
   color: white;
@@ -22,6 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .header-top {
@@ -31,10 +33,11 @@
 
 .header-main {
   background-color: rgb(255, 255, 255);
-  max-width: 1200px;
+  margin: 0 70px;
+  max-width: 100%;
   height: 150px;
-  margin: auto;
   position: relative;
+  border: 1px solid #2C3F580D;
 }
 
 .header-rectangle {

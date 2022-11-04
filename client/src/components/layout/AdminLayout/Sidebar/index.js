@@ -1,7 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './sidebar.css'
 
 const Sidebar = () => {
+  const navigate = useNavigate()
+  const handleClickAdd = () => {
+    navigate('/admin/addtest')
+  }
   return (
     <div className='sidebar'>
       <div className='sidebar-container'>
@@ -12,7 +17,7 @@ const Sidebar = () => {
               <div className='sidebar-menu-icon'></div>
               <div className='sidebar-menu-text'>Entradas</div>
             </div>
-            <div className='sidebar-menu-item'>
+            <div className='sidebar-menu-item' onClick={handleClickAdd}>
               <div className='sidebar-menu-icon'></div>
               <div className='sidebar-menu-text'>Anadir test</div>
             </div>
