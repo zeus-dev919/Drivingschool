@@ -1,0 +1,50 @@
+.sidebar {
+  width: 150px;
+  background-color: #3598DB;
+}
+
+.sidebar-container {
+  padding-top: 13px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-logo {
+  width: 101px;
+  height: 101px;
+  background-color: aquamarine;
+}
+
+.sidebar-menu {
+  margin-top: 31px;
+}
+
+.sidebar-menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.sidebar-menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  margin: auto;
+}
+
+.sidebar-menu-icon {
+  width: 32.54px;
+  height: 40.3px;
+  background-color: aqua;
+}
+
+.sidebar-menu-text {
+  font-size: 14.95px;
+}

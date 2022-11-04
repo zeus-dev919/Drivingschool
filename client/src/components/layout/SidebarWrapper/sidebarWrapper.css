@@ -1,0 +1,8 @@
+.sidebar-wrapper-container {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.sidebar-children{
+  width: 100%;
+}

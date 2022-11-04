@@ -1,7 +1,7 @@
-const express =  require('express')
+const express = require('express')
 const app = express()
 
-const problemRoutes = requrie('./problem');
+const problemRoutes = require('./problem');
 
 app.use('/problem', problemRoutes)
 
