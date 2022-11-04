@@ -1,0 +1,38 @@
+.home-page {
+  text-align: center;
+  background-color: #48b1f7;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  font-size: 72px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  color: white;
+}
+
+.homepage-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  width: 200px;
+  height: 60px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.admin {
+  background-color: #DE3A3A;
+}
+
+.user {
+  background-color: #26FF4A;
+}
