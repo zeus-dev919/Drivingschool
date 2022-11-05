@@ -4,12 +4,11 @@
 }
 
 .add-button-section {
-  float: right;
   padding-right: 200px;
   margin: 100px 0 50px 0;
+  overflow: auto;
 }
 
 .view-tests-container {
-  margin-top: 300px;
   padding-right: 80px;
 }

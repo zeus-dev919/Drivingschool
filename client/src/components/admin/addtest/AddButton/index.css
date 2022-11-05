@@ -2,6 +2,7 @@
   width: 115px;
   background-color: #3598DB;
   padding: 8px;
+  float: right;
   display: flex;
   flex-direction: row;
 }
@@ -13,9 +14,7 @@
   opacity: 20%;
 }
 
-.admin-add-icon-img {
-  
-}
+.admin-add-icon-img {}
 
 .admin-add-txt {
   font-size: 15px;
