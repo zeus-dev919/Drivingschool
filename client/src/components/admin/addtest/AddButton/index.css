@@ -5,16 +5,20 @@
   float: right;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
+}
+
+.admin-plus-icon {
+  text-align: center;
+  align-items: center;
+  margin: 15px;
 }
 
 .admin-add-icon-section {
   width: 40px;
   height: 40px;
-  background-color: #000000;
-  opacity: 20%;
+  background-color: #4b71b8;
 }
-
-.admin-add-icon-img {}
 
 .admin-add-txt {
   font-size: 15px;

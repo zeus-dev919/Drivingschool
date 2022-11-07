@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5" height="21" viewBox="0 0 5 21">
+  <g id="More" transform="translate(4.5 0.5) rotate(90)">
+    <path id="More-2" data-name="More" d="M6.5,10.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,10.5Zm8,0a2,2,0,1,1-2-2A2,2,0,0,1,14.5,10.5Zm6,2a2,2,0,1,0-2-2A2,2,0,0,0,20.5,12.5Z" transform="translate(-2.5 -8.5)" fill="#818386" stroke="#707070" stroke-width="1" fill-rule="evenodd"/>
+  </g>
+</svg>

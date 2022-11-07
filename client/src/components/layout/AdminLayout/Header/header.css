@@ -4,9 +4,10 @@
 }
 
 .header-container {
-  background-color: #48b1f7;
+  background-image: url('../../../../assets/images/admin/header.png');
   padding-top: 19px;
   height: 250px;
+  width: 100%;
 }
 
 .header-button {
@@ -16,7 +17,7 @@
   background-color: #26FF4A;
   color: white;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   width: 118px;
   height: 56px;
@@ -63,7 +64,10 @@
 .header-logo-image {
   width: 162px;
   height: 162px;
-  background-color: #b6dbf3;
+  background-image: url('../../../../assets/images/admin/logo1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .header-title {

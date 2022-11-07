@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .sidebar {
   width: 150px;
   background-color: #3598DB;
@@ -15,11 +19,12 @@
 .sidebar-logo {
   width: 101px;
   height: 101px;
-  background-color: aquamarine;
+  background-image: url('../../../../assets/images/admin/logo1.png');
 }
 
 .sidebar-menu {
   margin-top: 31px;
+  width: 100%;
 }
 
 .sidebar-menu-container {
@@ -34,12 +39,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   align-items: center;
   padding: 30px 0;
-  margin: auto;
   cursor: pointer;
 }
 
+.sidebar-menu-item:hover {
+  background-color: #B8D4E8;
+}
 .sidebar-menu-icon {
   width: 32.54px;
   height: 40.3px;
@@ -49,3 +57,4 @@
 .sidebar-menu-text {
   font-size: 14.95px;
 }
+
