@@ -11,6 +11,12 @@ const AddTest = () => {
       </div>
       <div className='view-tests-container'>
         <TestRow />
+        <TestRow />
+        <TestRow />
+        <TestRow />
+        <TestRow />
+        <TestRow />
+        <TestRow />
       </div>
     </div>
   )

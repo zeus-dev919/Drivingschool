@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  margin-bottom: 13px;
 }
 
 .test-number-section {
@@ -46,7 +47,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .test-button {
