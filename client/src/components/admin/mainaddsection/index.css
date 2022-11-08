@@ -1,0 +1,54 @@
+.addsection {
+  text-align: center;
+  padding-right: 80px;
+}
+
+.addsection-return-button {
+  float: right;
+  margin-top: 19px;
+  border-radius: 14px;
+  background-color: #26FF4A;
+  color: white;
+  font-size: 17px;
+  padding: 17px 41px;
+  cursor: pointer;
+}
+
+.addsection-container {
+  padding: 126px 80px 0 80px;
+}
+
+.addsection-title {
+  width: 100%;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #C4BEBE;
+  text-align: center;
+  background-color: #F2F5FA;
+  border: none;
+}
+
+.addsection-title:focus {
+  outline: none;
+}
+
+.addsection-image-section {
+  margin-top: 45px;
+  margin-bottom: 60px;
+}
+
+.upload-image {
+  margin-left: -210px;
+  padding-bottom: 50px;
+  cursor: pointer;
+}
+
+.upload-text {
+  margin-top: -40px;
+  margin-left: 200px;
+}
+
+a {
+  color: #3A63DE;
+  cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.mainaddpage {
+  display: flex;
+  flex-direction: row;
+}
+
+.mainaddpage-sidebar {
+  width: 20%;
+}
+
+.mainaddpage-mainsection {
+  width: 80%;
+}

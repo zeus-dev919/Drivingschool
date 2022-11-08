@@ -7,7 +7,8 @@ import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
 import AddTest from '../pages/adminpages/AddTest'
 
-import SideButtonGroup from '../components/admin/sidebuttongroup'
+import MainAdd from '../pages/adminpages/MainAdd';
+
 export default function Router() {
   const router = [
     {
@@ -24,7 +25,7 @@ export default function Router() {
     },
     {
       path: '/testadd',
-      element: <SideButtonGroup />
+      element: <MainAdd />
     },
   ];
 

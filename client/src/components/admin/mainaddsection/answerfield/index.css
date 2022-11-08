@@ -1,0 +1,27 @@
+.answer-card {
+  position: relative;
+  text-align: center;
+}
+
+.answer-checkbox {
+  position: absolute;
+  float: right;
+  right: 27px;
+  width: 30px;
+  height: 30px;
+  margin-top: 37px;
+}
+
+.answer-input {
+  width: -webkit-fill-available;
+  padding: 30px 72px;
+  font-size: 30px;
+  color: #C4BEBE;
+  background-color: #F2F5FA;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.answer-input:focus {
+  outline: none;
+}

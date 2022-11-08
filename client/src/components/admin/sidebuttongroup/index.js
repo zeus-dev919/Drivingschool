@@ -3,7 +3,7 @@ import './index.css'
 
 const SideButtonGroup = () => {
   const handleClick = () => {
-    document.getElementsByClassName('sidebuttongroup-view-button')
+    document.getElementById('viewbutton').classList.add('show')
   }
   return (
     <div className='sidebuttongroup'>
@@ -11,7 +11,7 @@ const SideButtonGroup = () => {
         <div className='sidebuttongroup-button add-button' onClick={handleClick}>
           <div className='sidebuttongroup-text'>Agregar pregunta</div>
         </div>
-        <div className='sidebuttongroup-view-button view-button'>
+        <div id='viewbutton' className='sidebuttongroup-view-button view-button'>
           <div className='sidebuttongroup-view-icons'>
             <img className='sidebuttongroup-view-icon' src='/assets/icons/Show.png' alt='show icon' />
             <img className='sidebuttongroup-view-icon' src='/assets/icons/Drag.png' alt='detail icon' />

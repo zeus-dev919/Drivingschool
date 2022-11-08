@@ -18,12 +18,7 @@
   color: white;
   font-weight: 500;
   font-size: 17px;
-  font-weight: 700;
-  width: 118px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 17px 41px;
   cursor: pointer;
 }
 
