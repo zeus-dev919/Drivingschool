@@ -1,0 +1,60 @@
+.sidebuttongroup {
+  background-color: #3598DB;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebuttongroup-container {
+  padding: 110px 14px 0 17px;
+}
+
+.sidebuttongroup-button {
+  margin-bottom: 30px;
+  padding: 15px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-button {
+  background-color: #26FF4A;
+}
+
+.view-button {
+  background-color: #FFFFFF;
+}
+
+.store-button {
+  background-color: #DE3A3A;
+}
+
+.sidebuttongroup-text {
+  color: white;
+  font-size: 17px;
+}
+
+.sidebuttongroup-view-button {
+  text-align: center;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.sidebuttongroup-view-text {
+  color: #C4BEBE;
+  font-size: 17px;
+}
+
+.sidebuttongroup-view-icons {
+  float: right;
+  position: absolute;
+  right: 0;
+}
+
+.sidebuttongroup-view-icon {
+  margin: 0 7px;
+  cursor: pointer;
+}

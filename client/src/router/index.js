@@ -7,6 +7,7 @@ import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
 import AddTest from '../pages/adminpages/AddTest'
 
+import SideButtonGroup from '../components/admin/sidebuttongroup'
 export default function Router() {
   const router = [
     {
@@ -20,7 +21,11 @@ export default function Router() {
         { path: '', element: <Admin /> },
         { path: 'addtest', element: <AddTest /> },
       ]
-    }
+    },
+    {
+      path: '/testadd',
+      element: <SideButtonGroup />
+    },
   ];
 
   return useRoutes(router)
