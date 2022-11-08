@@ -1,0 +1,42 @@
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 50px;
+}
+
+.tabs-tab-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.tabs-tab {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  width: 120px;
+  background-color: #3598DB;
+  font-size: 17px;
+  color: white;
+  border-radius: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+.slider {
+  margin-top: 10px;
+  height: 3px;
+  width: 120px;
+  background-color: #3598DB;
+}
+
+.slider-line {
+  width: 100%;
+  margin-top: -2px;
+  height: 2px;
+  background-color: #d9e5f7;
+  background-color: red;
+}
