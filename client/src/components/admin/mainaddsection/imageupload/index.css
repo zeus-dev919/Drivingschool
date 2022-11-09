@@ -5,7 +5,7 @@
 
 .uploadbutton-image {
   display: inline-block;
-  margin-top: -50px;
+  cursor: pointer;
 }
 
 .browse-text {
