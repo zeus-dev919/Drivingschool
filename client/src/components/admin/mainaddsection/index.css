@@ -16,6 +16,7 @@
 
 .addsection-container {
   padding: 126px 80px 0 80px;
+  display: none;
 }
 
 .addsection-title {

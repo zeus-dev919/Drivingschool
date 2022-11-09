@@ -21,7 +21,7 @@ const TestRow = () => {
       <div className='test-problem-section'>Preguntas:30</div>
       <div className='test-button-group'>
         <div className='test-button delete'>
-          <img src='/assets/icons/Delete.png' alt='delete' />
+          <img src='/assets/icons/Delete1.png' alt='delete' />
         </div>
         <div className='test-button edit'>
           <img src='/assets/icons/Edit.png' alt='edit' />

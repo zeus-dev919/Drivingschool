@@ -4,9 +4,11 @@ import './index.css'
 const SideButtonGroup = () => {
   const handleClick = () => {
     document.getElementById('viewbutton').classList.add('show')
+    document.getElementById('addsection').style.display = 'block';
+    document.getElementById('sidebuttongroup').style.height = '100%';
   }
   return (
-    <div className='sidebuttongroup'>
+    <div className='sidebuttongroup' id='sidebuttongroup'>
       <div className='sidebuttongroup-container'>
         <div className='sidebuttongroup-button add-button' onClick={handleClick}>
           <div className='sidebuttongroup-text'>Agregar pregunta</div>

@@ -14,7 +14,7 @@ const MainAddSection = () => {
   return (
     <div className='addsection'>
       <div className='addsection-return-button' onClick={handleClick}>Incio</div>
-      <div className='addsection-container'>
+      <div className='addsection-container' id='addsection'>
         <input type='text' placeholder='Titulo de la pregunta' className='addsection-title' />
         <ImageUpload />
         <div className='addsection-answer-section'>

@@ -3,18 +3,12 @@
   margin-bottom: 60px;
 }
 
-.upload-image {
-  margin-left: -210px;
-  padding-bottom: 50px;
-  cursor: pointer;
+.uploadbutton-image {
+  display: inline-block;
+  margin-top: -50px;
 }
 
-.upload-text {
-  margin-top: -40px;
-  margin-left: 200px;
-}
-
-a {
+.browse-text {
   color: #3A63DE;
   cursor: pointer;
 }

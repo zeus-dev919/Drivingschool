@@ -32,16 +32,28 @@
 }
 
 .video-uploaded-section {
-  margin-top: 92px;
+  margin: 92px 0;
 }
 
 .video-uploaded {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
   background-color: #F2F5FA;
   width: 490px;
   height: 74px;
+}
+
+.video-image-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.video-image-button-group {
+  color: #818386;
 }
 
 .video-data {
@@ -50,4 +62,12 @@
   justify-content: left;
   text-align: left;
   gap: 0;
+}
+
+.video-download-button {
+  margin-right: 10px;
+}
+
+.video-delete-button {
+  margin-left: 10px;
 }
