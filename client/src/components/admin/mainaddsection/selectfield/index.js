@@ -1,11 +1,25 @@
 import React from 'react'
 import './index.css'
 
-const SelectField = (props) => {
+const SelectField = ({ fnClick, fnChange, text = '', bold = false, checked = false }) => {
+
   return (
-    <div className = 'selectfield'>
-      <input className='selectfield-checkbox' type='checkbox' />
-      <div className='selectfield-text'>{props.text}</div>
+    <div className='selectfield'>
+      <input
+        className='selectfield-checkbox'
+        onClick={e => {
+          if (fnClick !== undefined) fnClick(e.target.checked);
+        }}
+        onChange={e => {
+          if (fnChange !== undefined) fnChange(e.target.checked);
+        }}
+        type='checkbox'
+        checked={checked} />
+      {
+        bold === true ?
+          <div className='selectfield-bold-text'>{text}</div> :
+          <div className='selectfield-text'>{text}</div>
+      }
     </div>
   )
 }

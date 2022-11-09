@@ -1,0 +1,53 @@
+.video-link-section {
+  margin-top: 40px;
+  width: 800px;
+  height: 192px;
+  padding: 18px 10px 16px;
+  box-shadow: #2C3F580D -4px 10px 40px 0px;
+  position: relative;
+}
+
+.video-link-input {
+  width: 100%;
+  background-color: #F3F3F3;
+  border: none;
+  height: 60px;
+  font-size: 19px;
+  color: #C4BEBE;
+}
+
+.video-link-input:focus {
+  outline: none;
+}
+
+.video-save-button {
+  position: absolute;
+  margin-top: 120px;
+  float: right;
+  right: 24px;
+  background-color: #3598DB;
+  padding: 18px 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.video-uploaded-section {
+  margin-top: 92px;
+}
+
+.video-uploaded {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #F2F5FA;
+  width: 490px;
+  height: 74px;
+}
+
+.video-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  gap: 0;
+}

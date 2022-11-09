@@ -31,12 +31,16 @@
   height: 3px;
   width: 120px;
   background-color: #3598DB;
+  visibility: hidden;
 }
 
 .slider-line {
   width: 100%;
   margin-top: -2px;
   height: 2px;
-  background-color: #d9e5f7;
-  background-color: red;
+  background-color: #E1E3E5;
+}
+
+#tags-slider {
+  visibility: visible;
 }
