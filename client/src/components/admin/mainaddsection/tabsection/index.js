@@ -4,25 +4,25 @@ import TagTab from './tagtab';
 import VideoTab from './videotab';
 import DifficultyTab from './difficultytab';
 
-const TabSection = () => {
+const TabSection = props => {
   const [tab, setTab] = useState(1)
   const [content, setContent] = useState((<></>));
-  const handleClick = (props) => {
-    switch (props.id) {
+  const handleClick = (data) => {
+    switch (data.id) {
       case 1:
-        setTab(props.id)
+        setTab(data.id)
         document.getElementById('tags-slider').style.visibility = 'visible';
         document.getElementById('video-slider').style.visibility = 'hidden';
         document.getElementById('dificultad-slider').style.visibility = 'hidden';
         break;
       case 2:
-        setTab(props.id)
+        setTab(data.id)
         document.getElementById('tags-slider').style.visibility = 'hidden';
         document.getElementById('video-slider').style.visibility = 'visible';
         document.getElementById('dificultad-slider').style.visibility = 'hidden';
         break;
       case 3:
-        setTab(props.id)
+        setTab(data.id)
         document.getElementById('tags-slider').style.visibility = 'hidden';
         document.getElementById('video-slider').style.visibility = 'hidden';
         document.getElementById('dificultad-slider').style.visibility = 'visible';
@@ -34,12 +34,12 @@ const TabSection = () => {
 
   useEffect(() => {
     if (tab === 1)
-      setContent(<TagTab />);
+      setContent(<TagTab setProblem={props.setProblem} problem={props.problem} />);
     else if (tab === 2)
-      setContent(<VideoTab />)
+      setContent(<VideoTab setProblem={props.setProblem} problem={props.problem} />)
     else
-      setContent(<DifficultyTab />)
-  }, [tab])
+      setContent(<DifficultyTab setProblem={props.setProblem} problem={props.problem} />)
+  }, [tab, props.problem, props.setProblem])
 
   return (
     <>

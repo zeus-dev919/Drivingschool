@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import SideButtonGroup from '../../../components/admin/sidebuttongroup'
 import MainAddSection from '../../../components/admin/mainaddsection'
 
 const MainAdd = () => {
-  return(
-    <div className='mainaddpage'>
+  const [problem, setProblem] = useState({});
+  return (
+    <form className='mainaddpage' encType='multipart/form-data'>
       <div className='mainaddpage-sidebar'>
-        <SideButtonGroup />
+        <SideButtonGroup problem={problem} />
       </div>
       <div className='mainaddpage-mainsection'>
-        <MainAddSection />
+        <MainAddSection setProblem = {setProblem} problem={problem}/>
       </div>
-    </div>
+    </form>
   )
 }
 

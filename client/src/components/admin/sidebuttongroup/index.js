@@ -1,11 +1,16 @@
 import React from 'react'
 import './index.css'
 
-const SideButtonGroup = () => {
+const SideButtonGroup = (problem = {}) => {
   const handleClick = () => {
     document.getElementById('viewbutton').classList.add('show')
     document.getElementById('addsection').style.display = 'block';
     document.getElementById('sidebuttongroup').style.height = '100%';
+  }
+
+  const handleSubmit = () => {
+    const formData = new FormData();
+    console.log('problem: ', problem)
   }
   return (
     <div className='sidebuttongroup' id='sidebuttongroup'>
@@ -21,7 +26,7 @@ const SideButtonGroup = () => {
           <div className='sidebuttongroup-view-text'>Pregunta 1</div>
         </div>
         <div className='sidebuttongroup-button store-button'>
-          <div className='sidebuttongroup-text'>Guardar prueba</div>
+          <div className='sidebuttongroup-text' onClick = {handleSubmit}>Guardar prueba</div>
         </div>
       </div>
     </div>

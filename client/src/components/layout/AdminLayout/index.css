@@ -6,6 +6,10 @@
   font-family: 'Poppins';
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 @font-face {
   font-family: 'Poppins';
   src: url('../../../assets/fonts/Poppins/Poppins-Regular.ttf');

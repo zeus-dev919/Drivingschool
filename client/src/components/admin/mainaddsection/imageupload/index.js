@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
-import { saveImage } from '../../../../apis/question'
 import { FileUploader } from 'react-drag-drop-files'
 
-const ImageUpload = () => {
-  const fileTypes = ['JPG', 'PNG', 'GIF'];
-  const [file, setFile] = useState(null)
+const ImageUpload = props => {
+  const fileTypes = ['JPG', 'PNG', 'GIF', 'jpg', 'png', 'gif'];
   const [image, setImage] = useState(null)
 
   const handleDropChange = (dropFile) => {
-    console.log('dropFile: ', dropFile);
-    setFile(dropFile)
+    props.setProblem({...props.problem, image: dropFile});
     setImage(URL.createObjectURL(dropFile));
   }
 

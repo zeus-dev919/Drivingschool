@@ -1,29 +1,29 @@
 import React from 'react'
 import './index.css'
 import { useNavigate } from 'react-router-dom'
-import AnswerField from './answerfield'
+import AnswerFields from './answerfields'
 import ImageUpload from './imageupload'
 import TabSection from './tabsection'
 
-const MainAddSection = () => {
+const MainAddSection = props => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate('/admin/addtest')
+  }
+  const handleChange = (e) => {
+    props.setProblem({ ...props.problem, title: e.target.value })
   }
 
   return (
     <div className='addsection'>
       <div className='addsection-return-button' onClick={handleClick}>Incio</div>
       <div className='addsection-container' id='addsection'>
-        <input type='text' placeholder='Titulo de la pregunta' className='addsection-title' />
-        <ImageUpload />
+        <input type='text' placeholder='Titulo de la pregunta' className='addsection-title' onChange={handleChange} />
+        <ImageUpload setProblem={props.setProblem} problem={props.problem} />
         <div className='addsection-answer-section'>
-          <AnswerField placeholder='Respuesta 1' />
-          <AnswerField placeholder='Respuesta 2' />
-          <AnswerField placeholder='Respuesta 3' />
-          <AnswerField placeholder='Respuesta 4' />
+          <AnswerFields setProblem={props.setProblem} problem={props.problem} />
         </div>
-        <TabSection />
+        <TabSection setProblem={props.setProblem} problem={props.problem} />
       </div>
     </div>
   )

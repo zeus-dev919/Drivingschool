@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 
-const SelectField = ({ fnClick, fnChange, text = '', bold = false, checked = false }) => {
+const SelectField = ({ fnClick, fnChange, text = '', bold = false}) => {
 
   return (
     <div className='selectfield'>
@@ -14,7 +14,7 @@ const SelectField = ({ fnClick, fnChange, text = '', bold = false, checked = fal
           if (fnChange !== undefined) fnChange(e.target.checked);
         }}
         type='checkbox'
-        checked={checked} />
+       />
       {
         bold === true ?
           <div className='selectfield-bold-text'>{text}</div> :
