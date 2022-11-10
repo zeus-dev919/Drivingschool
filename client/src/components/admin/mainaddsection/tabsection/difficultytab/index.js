@@ -1,14 +1,15 @@
 import React from 'react'
 import './index.css'
+import SelectField from '../../selectfield';
 
 const DifficultyTab = props => {
-  const difficultyGroup = document.getElementsByClassName('selectfield-checkbox');
+  const difficultyGroup = document.getElementsByName('difficulty');
 
   const onChange = (e) => {
     Object.keys(difficultyGroup).map((key) => {
-      if (difficultyGroup[key].name === e.target.name) {
+      if (difficultyGroup[key].id === e.target.id) {
         if (e.target.checked === true)
-          props.setProblem({ ...props.problem, difficulty: e.target.name })
+          props.setProblem({ ...props.problem, difficulty: e.target.id })
         else
           props.setProblem({ ...props.problem, difficulty: null })
       }
@@ -20,26 +21,11 @@ const DifficultyTab = props => {
   return (
     <div>
       <div className='tag-tabs-underline'>Dificultad</div>
-      <div className='selectfield'>
-        <input className='selectfield-checkbox' type='checkbox' name='difficulty1' onChange={onChange} />
-        <div className='selectfield-text'>star 1</div>
-      </div>
-      <div className='selectfield'>
-        <input className='selectfield-checkbox' type='checkbox' name='difficulty2' onChange={onChange} />
-        <div className='selectfield-text'>star 2</div>
-      </div>
-      <div className='selectfield'>
-        <input className='selectfield-checkbox' type='checkbox' name='difficulty3' onChange={onChange} />
-        <div className='selectfield-text'>star 3</div>
-      </div>
-      <div className='selectfield'>
-        <input className='selectfield-checkbox' type='checkbox' name='difficulty4' onChange={onChange} />
-        <div className='selectfield-text'>star 4</div>
-      </div>
-      <div className='selectfield'>
-        <input className='selectfield-checkbox' type='checkbox' name='difficulty5' onChange={onChange} />
-        <div className='selectfield-text'>star 5</div>
-      </div>
+      <SelectField name='difficulty' id='difficulty 1' onChange={onChange} />
+      <SelectField name='difficulty' id='difficulty 2' onChange={onChange} />
+      <SelectField name='difficulty' id='difficulty 3' onChange={onChange} />
+      <SelectField name='difficulty' id='difficulty 4' onChange={onChange} />
+      <SelectField name='difficulty' id='difficulty 5' onChange={onChange} />
     </div>
   )
 }

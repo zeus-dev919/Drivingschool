@@ -20,6 +20,13 @@
   font-size: 17px;
 }
 
+.selectfield-uppercase-text {
+  margin-left: 80px;
+  text-transform: uppercase;
+  color: #333333;
+  font-size: 17px;
+}
+
 .selectfield-text {
   margin-left: 80px;
   color: #333333;
