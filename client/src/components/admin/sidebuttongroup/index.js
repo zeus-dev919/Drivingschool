@@ -1,7 +1,9 @@
 import React from 'react'
 import './index.css'
+import { useSelector } from 'react-redux'
 
-const SideButtonGroup = (problem = {}) => {
+const SideButtonGroup = props => {
+  const problem = useSelector(state => state.problemReducer)
   const handleClick = () => {
     document.getElementById('viewbutton').classList.add('show')
     document.getElementById('addsection').style.display = 'block';
@@ -10,7 +12,7 @@ const SideButtonGroup = (problem = {}) => {
 
   const handleSubmit = () => {
     const formData = new FormData();
-    console.log('problem: ', problem)
+    console.log('problem: ', props.problem)
   }
   return (
     <div className='sidebuttongroup' id='sidebuttongroup'>
@@ -26,7 +28,7 @@ const SideButtonGroup = (problem = {}) => {
           <div className='sidebuttongroup-view-text'>Pregunta 1</div>
         </div>
         <div className='sidebuttongroup-button store-button'>
-          <div className='sidebuttongroup-text' onClick = {handleSubmit}>Guardar prueba</div>
+          <div className='sidebuttongroup-text' onClick={handleSubmit}>Guardar prueba</div>
         </div>
       </div>
     </div>

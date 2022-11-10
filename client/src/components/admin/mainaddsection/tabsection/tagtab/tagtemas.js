@@ -1,15 +1,25 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import SelectField from '../../selectfield'
 
 const TagTemas = props => {
+  useEffect(() => {
+    if (document.getElementById(props.problem.tema) !== null){
+      document.getElementById(props.problem.tema).checked = true
+      document.getElementsByName(props.problem.tema)[0].style.display = 'block'
+    }
+    if (document.getElementById(props.problem.category) !== null)
+      document.getElementById(props.problem.category).checked = true
+  }, [])
   const temaGroup = document.getElementsByName('tema');
   const onChange = (e) => {
     Object.keys(temaGroup).map((key) => {
       if (temaGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
           document.getElementsByName(e.target.id)[0].style.display = 'block'
-          props.setProblem({ ...props.problem, category: null })
-          props.setProblem({ ...props.problem, tema: e.target.id })
+          if (document.getElementById(props.problem.category) !== null){
+            document.getElementById(props.problem.category).checked = false;
+          }
+          props.setProblem({ ...props.problem, tema: e.target.id, category: null })
         }
         else {
           document.getElementsByName(e.target.id)[0].style.display = 'none'

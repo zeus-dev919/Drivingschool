@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './index.css'
 import SelectField from '../../selectfield';
 
 const DifficultyTab = props => {
+  useEffect(() => {
+    if (document.getElementById(props.problem.difficulty) !== null)
+      document.getElementById(props.problem.difficulty).checked = true
+  }, [props])
   const difficultyGroup = document.getElementsByName('difficulty');
-
   const onChange = (e) => {
     Object.keys(difficultyGroup).map((key) => {
       if (difficultyGroup[key].id === e.target.id) {
-        if (e.target.checked === true)
+        if (e.target.checked === true) {
           props.setProblem({ ...props.problem, difficulty: e.target.id })
-        else
+        }
+        else {
           props.setProblem({ ...props.problem, difficulty: null })
+        }
       }
       else
         difficultyGroup[key].checked = false

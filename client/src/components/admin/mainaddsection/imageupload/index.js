@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
 import { FileUploader } from 'react-drag-drop-files'
-
 const ImageUpload = props => {
   const fileTypes = ['JPG', 'PNG', 'GIF', 'jpg', 'png', 'gif'];
   const [image, setImage] = useState(null)
