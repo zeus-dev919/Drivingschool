@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const modelName = 'Problem'
+const modelName = 'Question'
 
-const ProblemSchema = new mongoose.Schema({
-  question: {
+const QuestionSchema = new mongoose.Schema({
+  title: {
     type: String,
     required: true,
   },
@@ -10,16 +10,17 @@ const ProblemSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  answers: [{
-    answer: {
+  choices: [{
+    choice: {
       type: String,
       required: true,
-    },
-    isTrue: {
-      type: Boolean,
     }
   }],
-  tab: {
+  answer: {
+    type: String,
+    required: true
+  },
+  tema: {
     type: String,
     required: true,
   },
@@ -27,7 +28,7 @@ const ProblemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  videos: {
+  video: {
     type: String,
     default: null,
   },
@@ -36,7 +37,11 @@ const ProblemSchema = new mongoose.Schema({
     required: true,
     default: 0
   },
+  duration: {
+    type: Number,
+    required: false
+  },
   timestamp: {}
 })
 
-module.exports = mongoose.model(modelName, ProblemSchema)
+module.exports = mongoose.model(modelName, QuestionSchema)
