@@ -36,7 +36,6 @@ const AnswerFields = props => {
   }
 
   useEffect(()=>{
-    console.log(props.problem.choices);
     if(!props.problem.choices) {
       setChoices({
         choice1: '',

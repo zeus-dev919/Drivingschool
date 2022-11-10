@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const AddButton = () => {
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate('/testadd');
+    navigate('/add');
   }
   return (
     <div className='admin-add-button' onClick={handleClick}>

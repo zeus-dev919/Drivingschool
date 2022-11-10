@@ -5,9 +5,10 @@ import HomePage from '../pages/home'
 
 import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
-import AddTest from '../pages/adminpages/AddTest'
 
-import MainAdd from '../pages/adminpages/MainAdd';
+import AddLayout from '../components/layout/AddLayout';
+
+//import MainAdd from '../pages/adminpages/MainAdd';
 
 export default function Router() {
   const router = [
@@ -20,13 +21,24 @@ export default function Router() {
       element: <AdminLayout />,
       children: [
         { path: '', element: <Admin /> },
-        { path: 'addtest', element: <AddTest /> },
       ]
     },
     {
-      path: '/testadd',
-      element: <MainAdd />
+      path: '/add',
+      element: <AddLayout />,
+      children: [
+        { path: '', element: <></> },
+        { path: ':id', element: <><h1>today</h1></> },
+      ]
     },
+    // {
+    //   path: '/testadd',
+    //   element: <PreAdd />
+    // },
+    // {
+    //   path: '/testadd/:id',
+    //   element: <MainAdd />
+    // },
   ];
 
   return useRoutes(router)

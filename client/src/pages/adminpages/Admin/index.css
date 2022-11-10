@@ -1,4 +1,4 @@
-.add-test-container {
+.admin-container {
   position: relative;
   padding: 0 60px;
 }
@@ -9,6 +9,6 @@
   overflow: auto;
 }
 
-.view-tests-container {
+.tests-row-container {
   padding-right: 150px;
 }
