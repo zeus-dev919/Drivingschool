@@ -10,7 +10,7 @@ const QuestionSection = () => {
     document.getElementsByClassName('leftbuttongroup')[0].style.height = '100%'
   },[])
   return (
-    <div id='addsection'>
+    <div>
       <Title/>
       <ImageUpload/>
       <div className='addsection-answer-section'>

@@ -56,7 +56,7 @@ const AnswerFields = props => {
     if (question) {
        question.choices ? setChoices(question.choices) : <></>
     }  
-  }, [])
+  }, [id])
 
   return (
     <>

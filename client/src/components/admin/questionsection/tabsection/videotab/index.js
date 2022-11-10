@@ -32,7 +32,7 @@ const VideoTab = props => {
       if (question.video !== undefined)
         setLink(question.video)
     }
-  }, [])
+  }, [id])
   return (
     <>
       <div className='tag-tabs-underline'>video link</div>

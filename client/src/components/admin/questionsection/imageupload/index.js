@@ -26,11 +26,11 @@ const ImageUpload = () => {
 
   useEffect(() => {
     if (question) {
-      question.image ? setImage(question.image) : setImage('/assets/icons/Main Image.png')
+      question.image ? setImage(URL.createObjectURL(question.image)) : setImage('/assets/icons/Main Image.png')
     }
     else
       setImage('/assets/icons/Main Image.png')
-  }, [])
+  }, [id])
 
   return (
     <div className='addsection-image-section'>

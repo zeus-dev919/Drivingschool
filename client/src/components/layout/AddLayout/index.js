@@ -18,10 +18,10 @@ const AddLayout = () => {
           <div className='sidebuttongroup-container'>
             <CreateButton />
             <div id='question-button'>
-              <QuestionButton />
-              <QuestionButton />
-              <QuestionButton />
-              <QuestionButton />
+              <QuestionButton id={1} />
+              <QuestionButton id={2} />
+              <QuestionButton id={3} />
+              <QuestionButton id={4} />
             </div>
             <SaveButton />
           </div>
