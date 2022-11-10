@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import SelectField from '../../selectfield'
 
 const TagTemas = props => {
   useEffect(() => {
-    if (document.getElementById(props.problem.tema) !== null){
+    if (document.getElementById(props.problem.tema) !== null) {
       document.getElementById(props.problem.tema).checked = true
       document.getElementsByName(props.problem.tema)[0].style.display = 'block'
     }
@@ -16,7 +16,7 @@ const TagTemas = props => {
       if (temaGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
           document.getElementsByName(e.target.id)[0].style.display = 'block'
-          if (document.getElementById(props.problem.category) !== null){
+          if (document.getElementById(props.problem.category) !== null) {
             document.getElementById(props.problem.category).checked = false;
           }
           props.setProblem({ ...props.problem, tema: e.target.id, category: null })

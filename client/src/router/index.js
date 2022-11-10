@@ -7,8 +7,7 @@ import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
-
-//import MainAdd from '../pages/adminpages/MainAdd';
+import QuestionSection from '../components/admin/questionsection';
 
 export default function Router() {
   const router = [
@@ -28,17 +27,9 @@ export default function Router() {
       element: <AddLayout />,
       children: [
         { path: '', element: <></> },
-        { path: ':id', element: <><h1>today</h1></> },
+        { path: ':id', element: <QuestionSection /> },
       ]
     },
-    // {
-    //   path: '/testadd',
-    //   element: <PreAdd />
-    // },
-    // {
-    //   path: '/testadd/:id',
-    //   element: <MainAdd />
-    // },
   ];
 
   return useRoutes(router)

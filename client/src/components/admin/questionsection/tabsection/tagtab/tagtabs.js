@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import SelectField from '../../selectfield'
 
 const TagTabs = props => {
-  useEffect(()=>{
-    if(document.getElementById(props.problem.tag) !== null)
+  useEffect(() => {
+    if (document.getElementById(props.problem.tag) !== null)
       document.getElementById(props.problem.tag).checked = true
-  },[props])
+  }, [props])
   const tagGroup = document.getElementsByName('tagtab');
   const onChange = (e) => {
     Object.keys(tagGroup).map((key) => {
