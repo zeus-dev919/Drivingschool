@@ -1,8 +1,9 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 
 const SaveButton = () => {
   const handleSubmit = () => {
-    const formData = new FormData();
+    toast.success('Success')    
   }
 
   return(

@@ -1,21 +1,40 @@
 import React, { useEffect } from 'react'
 import './index.css'
 import SelectField from '../../selectfield';
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { insertQuestion } from '../../../../../store/actions/question'
 
 const DifficultyTab = props => {
+  const { id } = useParams()
+  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    if (document.getElementById(props.problem.difficulty) !== null)
-      document.getElementById(props.problem.difficulty).checked = true
-  }, [props])
+    if(question){
+      if (document.getElementById(question.difficulty) !== null)
+        document.getElementById(question.difficulty).checked = true
+    }
+  }, [])
   const difficultyGroup = document.getElementsByName('difficulty');
   const onChange = (e) => {
     Object.keys(difficultyGroup).map((key) => {
       if (difficultyGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
-          props.setProblem({ ...props.problem, difficulty: e.target.id })
+          const data = {
+            id: id,
+            property: 'difficulty',
+            value: e.target.id
+          }
+          dispatch(insertQuestion(data))
         }
         else {
-          props.setProblem({ ...props.problem, difficulty: null })
+          const data = {
+            id: id,
+            property: 'difficulty',
+            value: null
+          }
+          dispatch(insertQuestion(data))
         }
       }
       else

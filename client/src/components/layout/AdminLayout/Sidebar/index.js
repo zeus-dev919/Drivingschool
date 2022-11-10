@@ -5,7 +5,7 @@ import './sidebar.css'
 const Sidebar = () => {
   const navigate = useNavigate()
   const handleClickAdd = () => {
-    navigate('/admin/addtest')
+    navigate('/add')
   }
   return (
     <div className='sidebar'>

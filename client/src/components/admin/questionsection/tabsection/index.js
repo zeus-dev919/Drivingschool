@@ -4,7 +4,7 @@ import TagTab from './tagtab';
 import VideoTab from './videotab';
 import DifficultyTab from './difficultytab';
 
-const TabSection = props => {
+const TabSection = () => {
   const [tab, setTab] = useState(1)
   const [content, setContent] = useState((<></>));
   const handleClick = (data) => {
@@ -34,12 +34,12 @@ const TabSection = props => {
 
   useEffect(() => {
     if (tab === 1)
-      setContent(<TagTab setProblem={props.setProblem} problem={props.problem} />);
+      setContent(<TagTab />);
     else if (tab === 2)
-      setContent(<VideoTab setProblem={props.setProblem} problem={props.problem} />)
+      setContent(<VideoTab />)
     else
-      setContent(<DifficultyTab setProblem={props.setProblem} problem={props.problem} />)
-  }, [tab, props.problem, props.setProblem])
+      setContent(<DifficultyTab />)
+  }, [tab])
 
   return (
     <>

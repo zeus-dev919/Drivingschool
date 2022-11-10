@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { insertQuestion } from '../../../../store/actions/question'
 
 const AnswerFields = props => {
-  const [choices, setChoices] = useState({
-    choice1: '',
-    choice2: '',
-    choice3: '',
-    choice4: ''
-  });
+  const { id } = useParams()
+  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const dispatch = useDispatch()
+
+  const [choices, setChoices] = useState({});
   const [answer, setAnswer] = useState('');
 
   const checkboxGroup = document.getElementsByClassName('answer-checkbox');
@@ -16,11 +18,21 @@ const AnswerFields = props => {
       if (checkboxGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
           setAnswer(e.target.id)
-          props.setProblem({ ...props.problem, answer: e.target.id })
+          const data = {
+            id: id,
+            property: 'answer',
+            value: e.target.id
+          }
+          dispatch(insertQuestion(data))
         }
         else {
           setAnswer('');
-          props.setProblem({ ...props.problem, answer: '' })
+          const data = {
+            id: id,
+            property: 'answer',
+            value: ''
+          }
+          dispatch(insertQuestion(data))
         }
       }
       else {
@@ -32,21 +44,20 @@ const AnswerFields = props => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setChoices({ ...choices, [name]: value })
-    props.setProblem({ ...props.problem, choices: choices })
+    const data = {
+      id: id,
+      property: 'choices',
+      value: choices
+    }
+    dispatch(insertQuestion(data))
   }
 
-  useEffect(()=>{
-    if(!props.problem.choices) {
-      setChoices({
-        choice1: '',
-        choice2: '',
-        choice3: '',
-        choice4: ''
-      })
-    }
-    else
-      setChoices(props.problem.choices)
-  },[])
+  useEffect(() => {
+    if (question) {
+       question.choices ? setChoices(question.choices) : <></>
+    }  
+  }, [])
+
   return (
     <>
       <div className='answer-card'>

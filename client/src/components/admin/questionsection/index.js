@@ -1,19 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './index.css'
 import Title from './title'
 import AnswerFields from './answerfields'
 import ImageUpload from './imageupload'
 import TabSection from './tabsection'
 
-const QuestionSection = props => {
+const QuestionSection = () => {
+  useEffect(()=>{
+    document.getElementsByClassName('leftbuttongroup')[0].style.height = '100%'
+  },[])
   return (
     <div id='addsection'>
-      <Title setProblem={props.setProblem} problem={props.problem} />
-      <ImageUpload setProblem={props.setProblem} problem={props.problem} />
+      <Title/>
+      <ImageUpload/>
       <div className='addsection-answer-section'>
-        <AnswerFields setProblem={props.setProblem} problem={props.problem} />
+        <AnswerFields/>
       </div>
-      <TabSection setProblem={props.setProblem} problem={props.problem} />
+      <TabSection/>
     </div>
   )
 }

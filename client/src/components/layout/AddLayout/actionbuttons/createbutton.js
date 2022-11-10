@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const CreateButton = () => {
-
+  const navigate = useNavigate()
   const handleClick = () => {
-    document.getElementById('addsection').style.display = 'block';
-    document.getElementById('sidebuttongroup').style.height = '100%';
+    console.log('Create')
+    navigate('/add/1')
   }
 
   return(

@@ -1,7 +1,8 @@
-import { combineReducers } from "redux";
-import problemReducer from './problem'
+import { combineReducers } from "redux"
+import testReducer from './test'
+
 const reducer = combineReducers({
-  problemReducer
+  testReducer,
 })
 
 export default reducer

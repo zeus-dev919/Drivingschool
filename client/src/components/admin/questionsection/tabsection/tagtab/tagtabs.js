@@ -1,19 +1,40 @@
 import React, { useEffect } from 'react'
 import SelectField from '../../selectfield'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { insertQuestion } from '../../../../../store/actions/question'
 
-const TagTabs = props => {
+const TagTabs = () => {
+  const { id } = useParams()
+  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    if (document.getElementById(props.problem.tag) !== null)
-      document.getElementById(props.problem.tag).checked = true
-  }, [props])
+    if(question){
+      if (document.getElementById(question.tag) !== null)
+        document.getElementById(question.tag).checked = true
+    }
+  }, [])
   const tagGroup = document.getElementsByName('tagtab');
   const onChange = (e) => {
     Object.keys(tagGroup).map((key) => {
       if (tagGroup[key].id === e.target.id) {
-        if (e.target.checked === true)
-          props.setProblem({ ...props.problem, tag: e.target.id })
-        else
-          props.setProblem({ ...props.problem, tag: null })
+        if (e.target.checked === true){
+          const data = {
+            id: id,
+            property: 'tag',
+            value: e.target.id
+          }
+          dispatch(insertQuestion(data))
+        }
+        else{
+          const data = {
+            id: id,
+            property: 'tag',
+            value: null
+          }
+          dispatch(insertQuestion(data))
+        }
       }
       else
         tagGroup[key].checked = false

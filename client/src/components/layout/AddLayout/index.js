@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './index.css'
@@ -8,7 +8,6 @@ import QuestionButton from './actionbuttons/questionbutton'
 
 const AddLayout = () => {
   const navigate = useNavigate()
-  const [test, setTest] = useState([])
   const handleClick = () => {
     navigate('/admin')
   }

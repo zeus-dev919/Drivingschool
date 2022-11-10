@@ -1,29 +1,54 @@
 import React, { useEffect } from 'react'
 import SelectField from '../../selectfield'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { insertQuestion } from '../../../../../store/actions/question'
 
-const TagTemas = props => {
+const TagTemas = () => {
+  const { id } = useParams()
+  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    if (document.getElementById(props.problem.tema) !== null) {
-      document.getElementById(props.problem.tema).checked = true
-      document.getElementsByName(props.problem.tema)[0].style.display = 'block'
+    if (question) {
+      if (document.getElementById(question.tema) !== null) {
+        document.getElementById(question.tema).checked = true
+        document.getElementsByName(question.tema)[0].style.display = 'block'
+      }
+      if (document.getElementById(question.category) !== null)
+        document.getElementById(question.category).checked = true
     }
-    if (document.getElementById(props.problem.category) !== null)
-      document.getElementById(props.problem.category).checked = true
   }, [])
   const temaGroup = document.getElementsByName('tema');
   const onChange = (e) => {
-    Object.keys(temaGroup).map((key) => {
+    Object.keys(temaGroup).map(async (key) => {
       if (temaGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
           document.getElementsByName(e.target.id)[0].style.display = 'block'
-          if (document.getElementById(props.problem.category) !== null) {
-            document.getElementById(props.problem.category).checked = false;
+          if (document.getElementById(question.category) !== null) {
+            document.getElementById(question.category).checked = false;
           }
-          props.setProblem({ ...props.problem, tema: e.target.id, category: null })
+          const data = {
+            id: id,
+            property: 'tema',
+            value: e.target.id
+          }
+          await dispatch(insertQuestion(data))
+          const newData = {
+            id: id,
+            property: 'category',
+            value: null
+          }
+          dispatch(insertQuestion(newData))
         }
         else {
           document.getElementsByName(e.target.id)[0].style.display = 'none'
-          props.setProblem({ ...props.problem, tema: null })
+          const data = {
+            id: id,
+            property: 'tema',
+            value: null
+          }
+          dispatch(insertQuestion(data))
         }
       }
       else {
@@ -39,10 +64,20 @@ const TagTemas = props => {
     Object.keys(categoryGroup).map((key) => {
       if (categoryGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
-          props.setProblem({ ...props.problem, category: e.target.id })
+          const data = {
+            id: id,
+            property: 'category',
+            value: e.target.id
+          }
+          dispatch(insertQuestion(data))
         }
         else {
-          props.setProblem({ ...props.problem, category: null })
+          const data = {
+            id: id,
+            property: 'category',
+            value: null
+          }
+          dispatch(insertQuestion(data))
         }
       }
       else {

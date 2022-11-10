@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
 import { FileUploader } from 'react-drag-drop-files'
-const ImageUpload = props => {
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { insertQuestion } from '../../../../store/actions/question'
+
+const ImageUpload = () => {
+  const { id } = useParams()
+  const question = useSelector(state => state.testReducer.questions[id-1])
+  const dispatch = useDispatch()
+
   const fileTypes = ['JPG', 'PNG', 'GIF', 'jpg', 'png', 'gif'];
   const [image, setImage] = useState(null)
 
   const handleDropChange = (dropFile) => {
-    props.setProblem({...props.problem, image: dropFile});
+    console.log(dropFile)
     setImage(URL.createObjectURL(dropFile));
+    const data = {
+      id: id,
+      property: 'image',
+      value: dropFile
+    }
+    dispatch(insertQuestion(data))
   }
 
   useEffect(() => {
-    if (image === null) {
-      setImage('/assets/icons/Main Image.png')
+    if (question) {
+      question.image ? setImage(question.image) : setImage('/assets/icons/Main Image.png')
     }
     else
-      setImage(image)
-  }, [image])
+      setImage('/assets/icons/Main Image.png')
+  }, [])
 
   return (
     <div className='addsection-image-section'>
@@ -41,5 +55,4 @@ const ImageUpload = props => {
 
 export default ImageUpload
 
-  // < form encType = 'multipart/form-data' >
 

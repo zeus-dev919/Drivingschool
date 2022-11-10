@@ -30,6 +30,10 @@ export default function Router() {
         { path: ':id', element: <QuestionSection /> },
       ]
     },
+    {
+      path: '/user',
+      element: <h1>Todos</h1>
+    }
   ];
 
   return useRoutes(router)
