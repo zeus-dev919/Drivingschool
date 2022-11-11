@@ -8,6 +8,7 @@ import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
 import QuestionSection from '../components/admin/questionsection';
+import Temp from '../pages/temp';
 
 export default function Router() {
   const router = [
@@ -33,6 +34,10 @@ export default function Router() {
     {
       path: '/user',
       element: <h1>Todos</h1>
+    },
+    {
+      path:'/temp',
+      element:<Temp/>
     }
   ];
 
