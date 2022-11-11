@@ -1,44 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import './index.css'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { insertQuestion } from '../../../../../store/actions/question'
 
 const VideoTab = () => {
-  const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const { id } = useParams();
   const dispatch = useDispatch()
+  const questions = useSelector(state => state.testReducer.questions)
+  const [question, setQuestion] = useState({});
+  const [video, setVideo] = useState('')
 
-  const [link, setLink] = useState('')
-  const onChange = (e) => {
-    setLink(e.target.value)
-  }
-  const handleClick = () => {
-    if (link === undefined || link === null || link === '')
-      toast.error('Please fill the vimeo link.')
-    else {
-      const data = {
-        id: id,
-        property: 'video',
-        value: link
-      }
-      dispatch(insertQuestion(data))
-      toast.success('Saved')
-    }
-  }
   useEffect(() => {
-    if (question) {
-      if (question.video !== undefined)
-        setLink(question.video)
+    if (question.video)
+      setVideo(question.video)
+  }, [question])
+  
+  useEffect(() => {
+    if (questions[id - 1])
+      setQuestion(questions[id - 1])
+  }, [id, questions])
+
+  const onChange = (e) => {
+    setVideo(e.target.value)
+    const data = {
+      id: id,
+      property: 'video',
+      value: e.target.value
     }
-  }, [id, question])
+    dispatch(insertQuestion(data))
+  }
   return (
     <>
       <div className='tag-tabs-underline'>video link</div>
       <div className='video-link-section'>
-        <div className='video-save-button' onClick={handleClick}>guardar</div>
-        <input className='video-link-input' type='url' value={link} onChange={onChange} />
+        <input className='video-link-input' type='text' value={video} onChange={onChange} />
       </div>
     </>
   )

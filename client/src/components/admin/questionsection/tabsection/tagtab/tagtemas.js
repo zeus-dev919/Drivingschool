@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SelectField from '../../selectfield'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -6,21 +6,56 @@ import { insertQuestion } from '../../../../../store/actions/question'
 
 const TagTemas = () => {
   const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const [question, setQuestion] = useState('');
+  const questions = useSelector(state => state.testReducer.questions)
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (question) {
-      if (document.getElementById(question.tema) !== null) {
-        document.getElementById(question.tema).checked = true
-        document.getElementsByName(question.tema)[0].style.display = 'block'
+      if (question.tema) {
+        const temaGroup = document.getElementsByName('tema');
+        Object.keys(temaGroup).map(async (key) => {
+          if (temaGroup[key].id === question.tema) {
+            document.getElementById(question.tema).checked = true
+            document.getElementsByName(question.tema)[0].style.display = 'block'
+          }
+          else {
+            temaGroup[key].checked = false
+            if (document.getElementsByName(temaGroup[key].id)[0]) {
+              document.getElementsByName(temaGroup[key].id)[0].style.display = 'none'
+              const categoryGroup = document.getElementsByName(temaGroup[key].id);
+              Object.keys(categoryGroup).map(async (key) => {
+                categoryGroup[key].checked = false
+              })
+            }
+          }
+          return 0
+        })
       }
-      if (document.getElementById(question.category) !== null)
-        document.getElementById(question.category).checked = true
+      if (question.category) {
+        const categoryGroup = document.getElementsByName(document.getElementById(question.category).name);
+        console.log(categoryGroup)
+        Object.keys(categoryGroup).map(async (key) => {
+          if (categoryGroup[key].id === question.category) {
+            console.log('category: ', question.category);
+            document.getElementById(question.category).checked = true
+          }
+          else {
+            categoryGroup[key].checked = false
+          }
+          return 0
+        })
+      }
     }
-  }, [id, question])
-  const temaGroup = document.getElementsByName('tema');
+  }, [question])
+
+  useEffect(() => {
+    if (questions[id - 1])
+      setQuestion(questions[id - 1])
+  }, [id, questions])
+
   const onChange = (e) => {
+    const temaGroup = document.getElementsByName('tema');
     Object.keys(temaGroup).map(async (key) => {
       if (temaGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
@@ -53,9 +88,14 @@ const TagTemas = () => {
       }
       else {
         temaGroup[key].checked = false
-        document.getElementsByName(temaGroup[key].id)[0].style.display = 'none'
+        if (document.getElementsByName(temaGroup[key].id)[0]) {
+          document.getElementsByName(temaGroup[key].id)[0].style.display = 'none'
+          const categoryGroup = document.getElementsByName(temaGroup[key].id);
+          Object.keys(categoryGroup).map(async (key) => {
+            categoryGroup[key].checked = false
+          })
       }
-      return 0
+    }
     })
   }
 

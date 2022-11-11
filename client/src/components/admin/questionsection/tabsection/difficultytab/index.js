@@ -1,23 +1,44 @@
-import React, { useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import './index.css'
 import SelectField from '../../selectfield';
-import { useParams } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { insertQuestion } from '../../../../../store/actions/question'
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { insertQuestion } from '../../../../../store/actions/question';
 
-const DifficultyTab = props => {
-  const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+const DifficultyTab = () => {
+  const { id } = useParams();
   const dispatch = useDispatch()
+  const questions = useSelector(state => state.testReducer.questions)
+  const [question, setQuestion] = useState({});
 
   useEffect(() => {
-    if(question){
-      if (document.getElementById(question.difficulty) !== null)
-        document.getElementById(question.difficulty).checked = true
+    if (question.difficulty) {
+      const difficultyGroup = document.getElementsByName('difficulty');
+      Object.keys(difficultyGroup).map((key) => {
+        if (difficultyGroup[key].id === question.difficulty) {
+          document.getElementById(question.difficulty).checked = true
+        }
+        else
+          difficultyGroup[key].checked = false
+        return 0
+      })
     }
-  }, [id, question])
-  const difficultyGroup = document.getElementsByName('difficulty');
+    else {
+      const difficultyGroup = document.getElementsByName('difficulty');
+      Object.keys(difficultyGroup).map((key) => {
+        difficultyGroup[key].checked = false
+        return 0
+      })
+    }
+  }, [question])
+
+  useEffect(() => {
+    if (questions[id - 1])
+      setQuestion(questions[id - 1])
+  }, [id, questions])
+
   const onChange = (e) => {
+    const difficultyGroup = document.getElementsByName('difficulty');
     Object.keys(difficultyGroup).map((key) => {
       if (difficultyGroup[key].id === e.target.id) {
         if (e.target.checked === true) {
@@ -42,6 +63,7 @@ const DifficultyTab = props => {
       return 0
     })
   }
+
   return (
     <div>
       <div className='tag-tabs-underline'>Dificultad</div>

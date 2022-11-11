@@ -3,7 +3,7 @@ import './index.css'
 import TagTabs from './tagtabs'
 import TagTemas from './tagtemas'
 
-const TagTab = props => {
+const TagTab = () => {
   return (
     <>
       <TagTabs />

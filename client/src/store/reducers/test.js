@@ -2,32 +2,36 @@ import {
   INSERT_QUESTION,
   UPDATE_QUESTION,
   DELETE_QUESTION,
+  INITIALIZE_TEST,
 } from "../actions/constants"
+
+const initialState = { questions: [] };
 
 const testReducer = (state = { questions: [] }, action) => {
   switch (action.type) {
+    case INITIALIZE_TEST:
+      return initialState
+
     case INSERT_QUESTION:
-      const {id, property, value} = action.payload;
+      const { id, property, value } = action.payload;
       const index = id - 1;
       const newQuestion = [...state.questions];
-      console.log('new question: ', newQuestion)
       const data = {
-         [property] : value
+        [property]: value
       }
-      if(newQuestion[index] === undefined){
+      if (newQuestion[index] === undefined) {
         newQuestion.push(data)
       }
-      else{
+      else {
         newQuestion[index][property] = value
       }
-      console.log('question: ', newQuestion[index])
       return {
         ...state,
         questions: newQuestion
       }
     case UPDATE_QUESTION:
-    //  const {id, property, value} = action.payload;
-    //  const index = state.questions.findIndex(question => question.id === id);
+      //  const {id, property, value} = action.payload;
+      //  const index = state.questions.findIndex(question => question.id === id);
       const newArray = [...state.questions];
       newArray[index][property] = value;
       return {
