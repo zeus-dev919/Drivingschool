@@ -10,13 +10,14 @@ const CreateButton = props => {
 
   const handleClick = () => {
     const id = props.lists.length + 1;
-
+    
     if( id === questions.length + 1){
       props.setLists(props.lists.concat(<QuestionButton id={id} key={id - 1} />))
       navigate(`${id}`)
+
     }
     else{
-      toast.error('Can not create more. Please fill the current empty question.')
+      toast.error('No se puede crear más. Por favor complete la pregunta vacía actual.')
     }
     
   }

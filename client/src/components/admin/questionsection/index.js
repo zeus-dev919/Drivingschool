@@ -4,7 +4,7 @@ import Title from './title'
 import AnswerFields from './answerfields'
 import ImageUpload from './imageupload'
 import TabSection from './tabsection'
-
+import { InfinitySpin } from 'react-loader-spinner'
 import { insertQuestion } from '../../../store/actions/question'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -15,11 +15,19 @@ const QuestionSection = () => {
   const [question, setQuestion] = useState({});
   const questions = useSelector(state => state.testReducer.questions)
   const [url, setUrl] = useState('')
-
   useEffect(() => {
     document.getElementsByClassName('leftbuttongroup')[0].style.height = '100%'
   }, [])
 
+  useEffect(() => {
+    const x = document.getElementsByClassName('question-button')
+    Object.keys(x).map(async (key) => {
+      if (x[key].id === id)
+        document.getElementById(id).style.backgroundColor = '#4e4e4e'
+      else
+        document.getElementById(x[key].id).style.backgroundColor = '#ffffff'
+    })
+  }, [id])
   useEffect(() => {
     if (!question) {
       setQuestion({
@@ -140,7 +148,6 @@ const QuestionSection = () => {
     dispatch(insertQuestion(data))
   }
 
-
   let string = ''
   if (question) {
     string = (
@@ -151,15 +158,22 @@ const QuestionSection = () => {
           {
             question.choices ?
               (<AnswerFields choices={question.choices} handleChangeAnswerField={handleChangeAnswerField} onChangeAnswer={onChangeAnswer} />)
-              : <></>
+              : <InfinitySpin
+                width='200'
+                color="#4fa94d"
+              />
           }
         </div>
         <TabSection />
       </div>)
   }
   else {
-    <></>
+    <InfinitySpin
+      width='200'
+      color="#4fa94d"
+    />
   }
+
   return (
     <>
       {string}

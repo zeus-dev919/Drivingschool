@@ -8,10 +8,10 @@ const SaveButton = () => {
     if (test.length){
       const length = test.length
       console.log('test: ', test)
-      toast.success(`Totally ${length} questions saved`)
+      toast.success(`Totalmente ${length} de preguntas guardadas`)
     }
     else {
-      toast.error('Can not save empty test. Create at least one question.')
+      toast.error('No se puede guardar la prueba vacía. Haz al menos una pregunta.')
     }
   }
 

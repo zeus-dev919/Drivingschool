@@ -44,6 +44,10 @@
   background-color: #DE3A3A;
 }
 
+.active-question {
+  background-color: #cc00ff;
+}
+
 .sidebuttongroup-text {
   color: white;
   font-size: 17px;

@@ -1,11 +1,12 @@
 import React from 'react'
 import './index.css'
+import toast from 'react-hot-toast'
 
-const TestRow = () => {
+const TestRow = ({num=''}) => {
   return (
     <div className='test-item-row'>
       <div className='test-number-section'>
-        <div className='test-number-text'>01</div>
+        <div className='test-number-text'>{num}</div>
       </div>
       <div className='test-text'>Test Oficiale de la DGT</div>
       <div className='test-difficulty-section'>
@@ -20,14 +21,14 @@ const TestRow = () => {
       </div>
       <div className='test-problem-section'>Preguntas:30</div>
       <div className='test-button-group'>
-        <div className='test-button delete'>
+        <div className='test-button delete' onClick={() => toast.success('Esto se implementará después del trabajo de la base de datos..')}>
           <img src='/assets/icons/Delete1.png' alt='delete' />
         </div>
-        <div className='test-button edit'>
+        <div className='test-button edit' onClick={() => toast.success('Esto se implementará después del trabajo de la base de datos..')}>
           <img src='/assets/icons/Edit.png' alt='edit' />
         </div>
       </div>
-      <img src='/assets/icons/More.svg' alt='more'/>
+      <img src='/assets/icons/More.svg' alt='more' className='more' onClick={() => toast.success('Por favor, hágame saber qué hace este botón.')} />
     </div>
   )
 }

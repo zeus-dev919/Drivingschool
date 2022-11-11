@@ -34,10 +34,8 @@ const TagTemas = () => {
       }
       if (question.category) {
         const categoryGroup = document.getElementsByName(document.getElementById(question.category).name);
-        console.log(categoryGroup)
         Object.keys(categoryGroup).map(async (key) => {
           if (categoryGroup[key].id === question.category) {
-            console.log('category: ', question.category);
             document.getElementById(question.category).checked = true
           }
           else {
@@ -94,8 +92,8 @@ const TagTemas = () => {
           Object.keys(categoryGroup).map(async (key) => {
             categoryGroup[key].checked = false
           })
+        }
       }
-    }
     })
   }
 

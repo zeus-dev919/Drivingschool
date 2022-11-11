@@ -36,8 +36,8 @@ export default function Router() {
       element: <h1>Todos</h1>
     },
     {
-      path:'/temp',
-      element:<Temp/>
+      path: '/temp',
+      element: <Temp />
     }
   ];
 

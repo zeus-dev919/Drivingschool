@@ -1,23 +1,23 @@
-.container{
+.temp-container{
     margin: 150px 140px 100px 90px;
 }
-.body {
+.temp-body {
     display: flex;
     margin-bottom: 100px;
 }
-.img {
+.temp-img {
     width: 700px;
     height: 400px;
     margin-right: 70px;
     margin-top: 50px;
 }
-.title {
+.temp-title {
     height: 185px;
     font-size: 40px;
     margin-left: 60px;
     color: #707070;
 }
-.no-box {
+.temp-no-box {
     width: 60px;
     height: 119px;
     background-color: #3598DB;
@@ -27,7 +27,7 @@
     color: white;
     margin-right: 65px;
 }
-.no-spec-box {
+.temp-no-spec-box {
     width: 60px;
     height: 119px;
     background-color: #87A7BC;
@@ -37,16 +37,16 @@
     color: white;
     margin-right: 65px;
 }
-.description {
+.temp-description {
     font-size: 40px;
     color: #707070;
 }
-.row {
+.temp-row {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
 }
-.button {
+.temp-button {
     border: #3598DB;
     border-radius: 5px;
     background-color: #3598DB;
@@ -54,14 +54,14 @@
     height: 60px;
     color: white;
 }
-.left-btn {
+.temp-left-btn {
     margin-right: 12px;
 }
 
-.numbers {
+.temp-numbers {
     display: flex;
 }
-.num-box {
+.temp-num-box {
     width: 109px;
     height: 90px;
     border: 2px solid #707070;

@@ -10,13 +10,8 @@ const Admin = () => {
         <AddButton />
       </div>
       <div className='tests-row-container'>
-        <TestRow />
-        <TestRow />
-        <TestRow />
-        <TestRow />
-        <TestRow />
-        <TestRow />
-        <TestRow />
+        <TestRow num={'01'} />
+        <TestRow num={'02'} />
       </div>
     </div>
   )
