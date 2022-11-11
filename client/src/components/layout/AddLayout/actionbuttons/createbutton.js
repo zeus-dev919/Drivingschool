@@ -1,16 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import QuestionButton from './questionbutton'
 
-const CreateButton = () => {
+const CreateButton = props => {
   const navigate = useNavigate()
-  const questions = useSelector(state=> state.testReducer.questions)
 
   const handleClick = () => {
-    const id = questions.length + 1
-    navigate(`/add/${id}`);
-    document.getElementById('question-button').innerHTML += <QuestionButton />
+    props.setLists(props.lists.concat(<QuestionButton id={props.lists.length+1} key={props.lists.length} />))
+    navigate(`${props.lists.length + 1}`)
   }
 
   return(

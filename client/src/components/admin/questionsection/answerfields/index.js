@@ -53,10 +53,15 @@ const AnswerFields = props => {
   }
 
   useEffect(() => {
+    console.log('---------------')
     if (question) {
        question.choices ? setChoices(question.choices) : <></>
     }  
-  }, [id])
+    else {
+      console.log('question: ', question)
+      setChoices({})
+    }
+  }, [id, question])
 
   return (
     <>

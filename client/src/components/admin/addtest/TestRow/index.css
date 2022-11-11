@@ -10,6 +10,7 @@
   align-items: center;
   position: relative;
   margin-bottom: 13px;
+  box-shadow: #00000033 0px 6px 6px;
 }
 
 .test-number-section {

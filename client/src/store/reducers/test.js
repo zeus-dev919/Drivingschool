@@ -10,15 +10,17 @@ const testReducer = (state = { questions: [] }, action) => {
       const {id, property, value} = action.payload;
       const index = id - 1;
       const newQuestion = [...state.questions];
+      console.log('new question: ', newQuestion)
       const data = {
          [property] : value
       }
       if(newQuestion[index] === undefined){
         newQuestion.push(data)
       }
-      else(
+      else{
         newQuestion[index][property] = value
-      )
+      }
+      console.log('question: ', newQuestion[index])
       return {
         ...state,
         questions: newQuestion

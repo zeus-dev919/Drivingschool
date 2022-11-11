@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { insertQuestion } from '../../../../../store/actions/question'
 
-const VideoTab = props => {
+const VideoTab = () => {
   const { id } = useParams()
   const question = useSelector(state => state.testReducer.questions[id - 1])
   const dispatch = useDispatch()
@@ -32,7 +32,7 @@ const VideoTab = props => {
       if (question.video !== undefined)
         setLink(question.video)
     }
-  }, [id])
+  }, [id, question])
   return (
     <>
       <div className='tag-tabs-underline'>video link</div>

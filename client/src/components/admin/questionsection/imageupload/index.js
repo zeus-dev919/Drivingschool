@@ -30,7 +30,7 @@ const ImageUpload = () => {
     }
     else
       setImage('/assets/icons/Main Image.png')
-  }, [id])
+  }, [id, question])
 
   return (
     <div className='addsection-image-section'>

@@ -14,7 +14,7 @@ const TagTabs = () => {
       if (document.getElementById(question.tag) !== null)
         document.getElementById(question.tag).checked = true
     }
-  }, [id])
+  }, [id, question])
   const tagGroup = document.getElementsByName('tagtab');
   const onChange = (e) => {
     Object.keys(tagGroup).map((key) => {

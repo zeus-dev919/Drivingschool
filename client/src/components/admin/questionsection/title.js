@@ -23,7 +23,7 @@ const Title = () => {
       question.title ? setTitle(question.title) : setTitle('')
     else
       setTitle('')
-  }, [id])
+  }, [id, question])
   return (
     <>
       <input type='text' placeholder='Titulo de la pregunta' className='addsection-title' value={title} onChange={handleChange} />

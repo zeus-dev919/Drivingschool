@@ -15,7 +15,7 @@ const DifficultyTab = props => {
       if (document.getElementById(question.difficulty) !== null)
         document.getElementById(question.difficulty).checked = true
     }
-  }, [id])
+  }, [id, question])
   const difficultyGroup = document.getElementsByName('difficulty');
   const onChange = (e) => {
     Object.keys(difficultyGroup).map((key) => {

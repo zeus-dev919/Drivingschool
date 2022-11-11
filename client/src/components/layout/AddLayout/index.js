@@ -1,13 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Outlet } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './index.css'
 import CreateButton from './actionbuttons/createbutton'
 import SaveButton from './actionbuttons/savebutton'
-import QuestionButton from './actionbuttons/questionbutton'
 
 const AddLayout = () => {
   const navigate = useNavigate()
+  const [lists, setLists] = useState([])
   const handleClick = () => {
     navigate('/admin')
   }
@@ -16,13 +16,12 @@ const AddLayout = () => {
       <div className='addpage-left'>
         <div className='leftbuttongroup'>
           <div className='sidebuttongroup-container'>
-            <CreateButton />
-            <div id='question-button'>
-              <QuestionButton id={1} />
-              <QuestionButton id={2} />
-              <QuestionButton id={3} />
-              <QuestionButton id={4} />
-            </div>
+            <CreateButton lists={lists} setLists={setLists} />
+            {
+            Object.keys(lists).map((key) => 
+              lists[key]
+            )
+            }
             <SaveButton />
           </div>
         </div>

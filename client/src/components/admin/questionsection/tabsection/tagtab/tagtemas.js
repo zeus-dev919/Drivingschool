@@ -18,7 +18,7 @@ const TagTemas = () => {
       if (document.getElementById(question.category) !== null)
         document.getElementById(question.category).checked = true
     }
-  }, [id])
+  }, [id, question])
   const temaGroup = document.getElementsByName('tema');
   const onChange = (e) => {
     Object.keys(temaGroup).map(async (key) => {
