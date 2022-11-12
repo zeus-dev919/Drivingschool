@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './index.css'
@@ -11,6 +11,14 @@ const AddLayout = () => {
   const handleClick = () => {
     navigate('/admin')
   }
+
+  useEffect(() => {
+    if (lists.length === 0) {
+      navigate('/add')
+      document.getElementsByClassName('leftbuttongroup')[0].style.height = '100vh'
+    }
+  }, [lists])
+
   return (
     <form className='addpage' encType='multipart/form-data'>
       <div className='addpage-left'>
@@ -18,9 +26,9 @@ const AddLayout = () => {
           <div className='sidebuttongroup-container'>
             <CreateButton lists={lists} setLists={setLists} />
             {
-            Object.keys(lists).map((key) => 
-              lists[key]
-            )
+              Object.keys(lists).map((key) =>
+                lists[key]
+              )
             }
             <SaveButton />
           </div>

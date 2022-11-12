@@ -41,7 +41,7 @@ const testReducer = (state = { questions: [] }, action) => {
     case DELETE_QUESTION:
       return {
         ...state,
-        questions: state.questions.filter(question => question.id !== action.payload)
+        questions: state.questions.filter((question, index) => index !== action.payload.id - 1)
       }
     default:
       return state

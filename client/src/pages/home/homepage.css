@@ -23,7 +23,7 @@
   justify-content: center;
   align-items: center;
   font-size: 26px;
-  width: 200px;
+  width: 230px;
   height: 60px;
   border-radius: 10px;
   text-align: center;
@@ -36,4 +36,10 @@
 
 .user {
   background-color: #26FF4A;
+}
+
+.homepage-narrator {
+  color: white;
+  font-size: 30px;
+  margin: 100px;
 }
