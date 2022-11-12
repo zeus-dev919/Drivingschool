@@ -8,7 +8,7 @@ const Sidebar = () => {
     navigate('/add')
   }
   return (
-    <div className='sidebar'>
+    <div className='adminsidebar'>
       <div className='sidebar-container'>
         <div className='sidebar-logo' />
         <div className='sidebar-menu'>
