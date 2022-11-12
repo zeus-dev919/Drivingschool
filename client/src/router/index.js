@@ -10,7 +10,9 @@ import AddLayout from '../components/layout/AddLayout';
 import QuestionSection from '../components/admin/questionsection';
 import Temp from '../pages/temp';
 
-import UserLayout from '../components/users/layout';
+import UserLayout from '../components/layout/UserLayout';
+import Content from '../components/users/common/Content';
+
 export default function Router() {
   const router = [
     {
@@ -34,7 +36,10 @@ export default function Router() {
     },
     {
       path: '/user',
-      element: <UserLayout />
+      element: <UserLayout />,
+      children: [
+        {path: '', element: <Content />}
+      ]
     },
     {
       path: '/temp',

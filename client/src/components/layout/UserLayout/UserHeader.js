@@ -3,7 +3,7 @@ import { FaSearch, FaRegBell, FaRegClipboard } from 'react-icons/fa'
 
 const UserHeader = () => {
   return (
-    <div className='px-60 py-0.5 flex flex-row justify-between shadow-lg w-full items-center'>
+    <div className='px-60 py-0.5 mb-20 flex flex-row justify-between shadow-lg w-full items-center'>
       <div className='flex flex-row'>
         <img className='w-[80px]' src='/assets/icons/logo.png' alt='logo' />
         <div className="my-3 bg-gray-300 w-0.5"></div>
@@ -21,7 +21,7 @@ const UserHeader = () => {
         </div>
         <div className='flex flex-row gap-3'>
           <p className='text-sm font-medium'>Autoescuela App</p>
-          <img  className='w-7 y-7' src='/assets/icons/logo.png' alt='logo circle' />
+          <img  className='w-7 y-7 rounded-full' src='/assets/icons/logo.png' alt='logo circle' />
         </div>
       </div>
     </div>
