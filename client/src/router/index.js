@@ -8,10 +8,10 @@ import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
 import QuestionSection from '../components/admin/questionsection';
-import Temp from '../pages/temp';
 
 import UserLayout from '../components/layout/UserLayout';
 import Content from '../components/users/common/Content';
+import Exam from '../components/users/exam/Exam';
 
 export default function Router() {
   const router = [
@@ -42,8 +42,8 @@ export default function Router() {
       ]
     },
     {
-      path: '/temp',
-      element: <Temp />
+      path: '/exam/:id',
+      element: <Exam />
     }
   ];
 

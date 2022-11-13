@@ -5,11 +5,11 @@ import './index.css'
 
 const Admin = () => {
   return (
-    <div className='admin-container'>
-      <div className='add-button-section'>
+    <div className='relative py-14 pr-14'>
+      <div className='pr-48 ml-24 mr-14 overflow-auto'>
         <AddButton />
       </div>
-      <div className='tests-row-container'>
+      <div className='px-20 py-14'>
         <TestRow num={'01'} />
         <TestRow num={'02'} />
       </div>

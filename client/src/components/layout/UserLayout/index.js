@@ -1,7 +1,7 @@
 import React from 'react'
-import UserSideBar from './UserSideBar'
-import UserHeader from './UserHeader'
-import Tabs from './Tabs'
+import UserSideBar from './sidebar'
+import UserHeader from './header/UserHeader'
+import Tabs from './tabs'
 import { Outlet } from 'react-router-dom'
 
 const UserLayout = () => {

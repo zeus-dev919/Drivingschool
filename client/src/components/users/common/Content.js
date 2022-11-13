@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import TodoTest from './TodoTest'
-import Temas from './Temas'
+import TodoTest from './tests/TodoTest'
+import Temas from './temas'
 import { useParams } from 'react-router-dom'
-
+import Modal from './tests/Modal'
 
 const Content = () => {
   const { id } = useParams();
   const [string, setString] = useState()
-
-  console.log(id)
   useEffect(() => {
     if (id === 'testportemas') {
       setString(
@@ -26,8 +24,7 @@ const Content = () => {
         <TodoTest num={'05'} status={2} pending={false} timeLeft='00:00:00' />
         <TodoTest num={'06'} status={2} pending={false} timeLeft='00:00:00' />
         <TodoTest num={'07'} status={2} pending={false} timeLeft='00:00:00' />
-        <TodoTest num={'08'} status={2} pending={false} timeLeft='00:00:00' />
-        <TodoTest num={'09'} status={2} pending={false} timeLeft='00:00:00' />
+        <Modal />
       </>)
     }
   }, [id])
