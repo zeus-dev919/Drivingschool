@@ -9,7 +9,7 @@ const Homepage = () => {
     navigate('/admin')
   }
   const userBtnClick = () => {
-    navigate('/user')
+    navigate('/user/todotest')
   }
 
   return (

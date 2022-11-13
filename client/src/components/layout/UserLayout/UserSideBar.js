@@ -14,7 +14,7 @@ const SideBarButton = ({ id = '', name = '', icon = '', selectedMenu, setSelecte
             < span className="text-[15px] ml-4 font-bold"> {name}</span >
           </div >
           :
-          <div className='p-4 mt-1 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#3598DB] hover:text-white text-gray-500' id={id} onClick={onClick}>
+          <div className='p-4 mt-1 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-400 hover:text-white text-gray-500' id={id} onClick={onClick}>
             {icon}
             < span className="text-[15px] ml-4 font-bold"> {name}</span >
           </div >
@@ -28,7 +28,7 @@ const UserSideBar = () => {
 
   return (
     <div
-      className="sidebar px-3 mt-4 overflow-y-auto text-center shadow-xl h-[100vh]"
+      className="sidebar fixed px-3 mt-4 top-0 bottom-0 overflow-y-auto text-center shadow-xl w-1/6"
     >
       <div className="text-gray-800 text-2xl">
         <div className="p-2.5 mt-1 flex items-center">

@@ -38,7 +38,7 @@ export default function Router() {
       path: '/user',
       element: <UserLayout />,
       children: [
-        {path: '', element: <Content />}
+        { path: ':id', element: <Content /> },
       ]
     },
     {

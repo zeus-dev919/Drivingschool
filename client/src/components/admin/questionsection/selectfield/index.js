@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import { tagtabs, stars, temas, categories } from '../../../../utils/texts'
+import { tagtabs, stars, temas, categories} from '../../../../utils/texts'
 const SelectField = ({ onChange, name = '', id = ''}) => {
   let text = '';
   let className = '';
