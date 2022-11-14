@@ -1,45 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { deleteQuestion } from '../../../store/actions/question'
-
+import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 
-const CreateButton = props => {
-  const navigate = useNavigate()
+const CreateButton = ({ lists, setLists, selectedIndex, setSelectedIndex }) => {
   const questions = useSelector(state => state.testReducer.questions)
-  const dispatch = useDispatch();
-
-  const deleteClick = async (e) => {
-    const id = Number(e.target.id.slice(0, e.target.id.indexOf(" ")))
-    const data = {
-      id: id
-    }
-    await toast.promise(dispatch(deleteQuestion(data)),
-      {
-        loading: 'deleting',
-        success: 'success',
-        error: 'failed'
-      })
-    // props.setLists((current) => current.filter((list, index) => index !== current.length - 1))
-    const updatedLists = [...props.lists];
-    updatedLists.slice(0, props.lists.length - 1);
-    props.setLists(updatedLists);
-
-  }
+  const [question, setQuestion] = useState({})
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    // const id = props.lists.length + 1;
-    // if (id === questions.length + 1) {
-    //   props.setLists(props.lists.concat(<QuestionButton id={id} key={id} deleteClick={deleteClick} />))
-    //   navigate(`${id}`)
-    // }
-    // else {
-    //   toast.error('No se puede crear más. Por favor complete la pregunta vacía actual.')
-    // }
-    props.setLists(props.lists + 1)
-    props.setSelectedIndex(props.lists + 1)
-    navigate(`${props.lists + 1}`)
+    if (selectedIndex === 0) {
+      console.log(selectedIndex)
+      setLists(lists + 1)
+      setSelectedIndex(lists + 1)
+      navigate(`${lists + 1}`)
+    }
+    else {
+      console.log(selectedIndex)
+      setQuestion(questions[selectedIndex - 1])
+      console.log(question)
+      if (question === undefined || question === null || question === {})
+        toast.error('Current question is null. Fill all the fields.')
+      else if (question.title || question.image || question.choices || question.answer || question.category)
+        toast.error('Fill the missing fields.')
+      else {
+        setLists(lists + 1)
+        setSelectedIndex(lists + 1)
+        navigate(`${lists + 1}`)
+      }
+    }
   }
 
   return (

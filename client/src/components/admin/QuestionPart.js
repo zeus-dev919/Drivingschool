@@ -1,19 +1,19 @@
 import React from 'react'
 
-const Title = ({ title = '', onChange }) => {
+import Title from './QuestionSections/Title'
+import Image from './QuestionSections/Image'
+import Answers from './QuestionSections/Answers'
+import Tabs from './QuestionSections/tabs'
+
+const QuestionPart = () => {
   return (
     <>
-      <input type='text' placeholder='Titulo de la pregunta' className='addsection-title' onChange={onChange} />
-    </>
-  )
-}
-const Question = () => {
-
-  return(
-    <>
       <Title />
+      <Image />
+      <Answers />
+      <Tabs />
     </>
   )
 }
 
-export default Question
+export default QuestionPart

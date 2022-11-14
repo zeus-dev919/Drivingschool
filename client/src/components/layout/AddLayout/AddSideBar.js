@@ -9,7 +9,6 @@ const AddSideBar = () => {
   const [lists, setLists] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {

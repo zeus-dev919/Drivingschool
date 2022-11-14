@@ -7,7 +7,6 @@ import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
-import QuestionSection from '../components/admin/questionsection';
 import QuestionPart from '../components/admin/QuestionPart';
 
 import UserLayout from '../components/layout/UserLayout';
