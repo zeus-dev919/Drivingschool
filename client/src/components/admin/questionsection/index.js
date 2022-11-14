@@ -153,7 +153,7 @@ const QuestionSection = () => {
     string = (
       <div>
         <Title title={question.title} onChange={handleChangeTitle} />
-        <ImageUpload image={url} handleDropChange={handleDropChange} />
+        {/* <ImageUpload image={url} handleDropChange={handleDropChange} />
         <div className='addsection-answer-section'>
           {
             question.choices ?
@@ -164,7 +164,7 @@ const QuestionSection = () => {
               />
           }
         </div>
-        <TabSection />
+        <TabSection /> */}
       </div>)
   }
   else {

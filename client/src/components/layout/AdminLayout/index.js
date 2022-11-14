@@ -7,7 +7,7 @@ const AdminLayout = () => {
   return (
     <SidebarWrapper>
       <HeaderWrapper>
-        <div className = 'admin-pages'>
+        <div className = 'mt-14'>
           <Outlet />
         </div>
       </HeaderWrapper>

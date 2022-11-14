@@ -16,8 +16,8 @@ const SaveButton = () => {
   }
 
   return(
-    <div className='sidebuttongroup-button store-button' onClick={handleSubmit}>
-      <div className='sidebuttongroup-text'>Guardar prueba</div>
+    <div className='mb-8 py-5 w-full flex flex-row justify-center items-center cursor-pointer bg-[#DE3A3A] text-white text-lg' onClick={handleSubmit}>
+      Guardar prueba
     </div>
   )
 }

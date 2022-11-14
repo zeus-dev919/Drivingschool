@@ -8,10 +8,13 @@ import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
 import QuestionSection from '../components/admin/questionsection';
+import QuestionPart from '../components/admin/QuestionPart';
 
 import UserLayout from '../components/layout/UserLayout';
 import Content from '../components/users/common/Content';
 import Exam from '../components/users/exam/Exam';
+
+import Preview from '../components/users/Preview';
 
 export default function Router() {
   const router = [
@@ -31,7 +34,7 @@ export default function Router() {
       element: <AddLayout />,
       children: [
         { path: '', element: <></> },
-        { path: ':id', element: <QuestionSection /> },
+        { path: ':id', element: <QuestionPart /> },
       ]
     },
     {
@@ -44,6 +47,10 @@ export default function Router() {
     {
       path: '/exam/:id',
       element: <Exam />
+    },
+    {
+      path: '/preview',
+      element: <Preview />
     }
   ];
 

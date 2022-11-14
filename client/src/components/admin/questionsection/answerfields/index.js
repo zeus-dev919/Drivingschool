@@ -1,6 +1,16 @@
 import React from 'react'
 import './index.css'
 
+const Answer = ({}) => {
+  return(
+    <>
+      <div className='relative text-center'>
+        <input className='absolute float-right right-0 w-7 h-7 mt-9'/>
+        <input className='w-full px-24 py-7 bg-[#F2F5FA] border-0 mb-5' />
+      </div>
+    </>
+  )
+}
 const AnswerFields = ({ choices = {}, handleChangeAnswerField, onChangeAnswer }) => {
   return (
     <div>

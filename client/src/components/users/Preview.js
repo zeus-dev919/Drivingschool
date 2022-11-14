@@ -1,14 +1,32 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import Top from './exam/Top'
 import Bottom from './exam/Bottom'
+import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const Preview = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  let num;
+  if (location.state.id < 10)
+    num = '0' + location.state.id
+  else
+    num = location.state.id
   return (
     <>
-      <Top id={3} />
+      <div className='mt-8'>
+        <img className='absolute ml-10 -mt-2' src='/assets/icons/logo.png' alt='logo' />
+        <div className='bg-[#3598DB] flex flex-row justify-between pl-48 w-full h-8 pr-8 items-center'>
+          <div className='text-white text-lg'>Autoescuela App Test 001</div>
+          <div className='flex flex-row items-center gap-20'>
+            <div className='text-white text-lg'>Pregunta {num}.</div>
+            <div className='flex flex-row justify-center space-x-4 items-center'>
+              <div className='text-white text-lg'>salir</div>
+              <img className='cursor-pointer' src='/assets/icons/Logout.png' alt='' onClick={() => navigate(`/add/${location.state.id}`, { state: { id: location.state.id, total: location.state.total } })} />
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <div className='flex flex-row w-full'>
           <div className='flex justify-center items-center w-1/2'>
@@ -31,11 +49,11 @@ const Preview = () => {
               <div className='text-gray-500 text-[32px]'>Antes de repostar combustible es necesario...</div>
             </div>
             <div className='flex flex-row gap-10 justify-center items-center'>
-              <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300'>
+              <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300' onClick={() => navigate(-1)}>
                 <FaChevronLeft />
                 <div className='uppercase'>anterior</div>
               </div>
-              <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300'>
+              <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300' onClick={() => navigate(-1)}>
                 <div className='uppercase'>siguiente</div>
                 <FaChevronRight />
               </div>
