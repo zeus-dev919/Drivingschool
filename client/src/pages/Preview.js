@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import Bottom from './exam/Bottom'
-import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import Bottom from '../components/users/exam/Bottom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Preview = () => {
-  const navigate = useNavigate();
   const location = useLocation();
+  const question = useSelector(state => state.testReducer.questions[location.state.id-1])
+  const [choices, setChoices] = useState(['','','',''])
+  useEffect(()=>{
+    if(question.choices)
+      setChoices(question.choices)
+  },[])
+  const navigate = useNavigate();
   let num;
   if (location.state.id < 10)
     num = '0' + location.state.id
@@ -22,7 +28,7 @@ const Preview = () => {
             <div className='text-white text-lg'>Pregunta {num}.</div>
             <div className='flex flex-row justify-center space-x-4 items-center'>
               <div className='text-white text-lg'>salir</div>
-              <img className='cursor-pointer' src='/assets/icons/Logout.png' alt='' onClick={() => navigate(`/add/${location.state.id}`, { state: { id: location.state.id, total: location.state.total } })} />
+              <img className='cursor-pointer' src='/assets/icons/Logout.png' alt='' onClick={() => navigate(-1)} />
             </div>
           </div>
         </div>
@@ -34,20 +40,27 @@ const Preview = () => {
           </div>
           <div className='flex flex-col gap-10 w-1/2 px-10'>
             <div className='mt-20 text-[32px] text-gray-500'>
-              Si no existe espacio reservado para peatones, las personas que van en silla de ruedas, ?podran desplazarse por el arcen?
+              {question.title}
             </div>
             <div className='flex flex-row gap-10 items-center'>
               <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>A</div>
-              <div className='text-gray-500 text-[32px]'>Antes de repostar combustible es necesario...</div>
+              <div className='text-gray-500 text-[32px]'>{choices[0]}</div>
             </div>
             <div className='flex flex-row gap-10 items-center'>
               <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>B</div>
-              <div className='text-gray-500 text-[32px]'>Antes de repostar combustible es necesario...</div>
+              <div className='text-gray-500 text-[32px]'>{choices[1]}</div>
             </div>
             <div className='flex flex-row gap-10 items-center'>
               <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>C</div>
-              <div className='text-gray-500 text-[32px]'>Antes de repostar combustible es necesario...</div>
+              <div className='text-gray-500 text-[32px]'>{choices[2]}</div>
             </div>
+            {
+              choices[3] === '' ? (<></>): (<div className='flex flex-row gap-10 items-center'>
+              <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>D</div>
+              <div className='text-gray-500 text-[32px]'>{choices[3]}</div>
+            </div>)
+            }
+            
             <div className='flex flex-row gap-10 justify-center items-center'>
               <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300' onClick={() => navigate(-1)}>
                 <FaChevronLeft />

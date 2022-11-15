@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CreateButton from './Create'
 import SaveButton from './Save'
 import QuestionButton from './Question'
-import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const AddSideBar = () => {
+  const questions = useSelector(state => state.testReducer.questions)
   const [lists, setLists] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  const location = useLocation()
+  const navigate = useNavigate()
+  const { id } = useParams()
 
   useEffect(() => {
-    if(location.state){
-      setLists(location.state.total)
-      setSelectedIndex(location.state.id)
+    console.log(questions)
+    if (questions) {
+      if (questions.length === 0){
+        if(id === '1'){
+          setLists(1)
+          setSelectedIndex(1)
+        }
+      }
+      else{
+        setLists(questions.length)
+        setSelectedIndex(Number(id))
+      }
     }
   }, [])
 

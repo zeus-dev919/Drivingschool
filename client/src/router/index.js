@@ -13,7 +13,7 @@ import UserLayout from '../components/layout/UserLayout';
 import Content from '../components/users/common/Content';
 import Exam from '../components/users/exam/Exam';
 
-import Preview from '../components/users/Preview';
+import Preview from '../pages/Preview';
 
 export default function Router() {
   const router = [

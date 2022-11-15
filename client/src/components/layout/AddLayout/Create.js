@@ -1,32 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import isFill from '../../../utils/isFill'
 import toast from 'react-hot-toast'
 
 const CreateButton = ({ lists, setLists, selectedIndex, setSelectedIndex }) => {
   const questions = useSelector(state => state.testReducer.questions)
-  const [question, setQuestion] = useState({})
   const navigate = useNavigate()
 
   const handleClick = () => {
     if (selectedIndex === 0) {
-      console.log(selectedIndex)
       setLists(lists + 1)
       setSelectedIndex(lists + 1)
       navigate(`${lists + 1}`)
     }
     else {
-      console.log(selectedIndex)
-      setQuestion(questions[selectedIndex - 1])
-      console.log(question)
-      if (question === undefined || question === null || question === {})
-        toast.error('Current question is null. Fill all the fields.')
-      else if (question.title || question.image || question.choices || question.answer || question.category)
-        toast.error('Fill the missing fields.')
+      if (questions.length === 0){
+        console.log(questions.length)
+        toast.error('Please fill all the question inputs.')
+      }
       else {
-        setLists(lists + 1)
-        setSelectedIndex(lists + 1)
-        navigate(`${lists + 1}`)
+        if (lists === questions.length) {
+          console.log(questions[questions.length - 1])
+
+          if (questions[questions.length - 1] === undefined) {
+            toast.error('Please fill all the question inputs.')
+          }
+          else {
+            console.log(questions[questions.length-1])
+            const res = isFill(questions[questions.length - 1])
+            if (res.isFull) {
+              setLists(lists + 1)
+              setSelectedIndex(lists + 1)
+              navigate(`${lists + 1}`)
+            }
+            else {
+              toast.error(`Please fill the following sections: ${res.details}`)
+            }
+          }
+        } else {
+          console.log('lists: ', lists)
+          console.log(questions.length)
+          toast.error('Please fill all the question inputs.')
+        }
       }
     }
   }
