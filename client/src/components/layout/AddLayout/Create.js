@@ -21,13 +21,11 @@ const CreateButton = ({ lists, setLists, selectedIndex, setSelectedIndex }) => {
       }
       else {
         if (lists === questions.length) {
-          console.log(questions[questions.length - 1])
 
           if (questions[questions.length - 1] === undefined) {
             toast.error('Please fill all the question inputs.')
           }
           else {
-            console.log(questions[questions.length-1])
             const res = isFill(questions[questions.length - 1])
             if (res.isFull) {
               setLists(lists + 1)
@@ -39,8 +37,6 @@ const CreateButton = ({ lists, setLists, selectedIndex, setSelectedIndex }) => {
             }
           }
         } else {
-          console.log('lists: ', lists)
-          console.log(questions.length)
           toast.error('Please fill all the question inputs.')
         }
       }

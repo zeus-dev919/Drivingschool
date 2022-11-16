@@ -13,7 +13,6 @@ const AddSideBar = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    console.log(questions)
     if (questions) {
       if (questions.length === 0){
         if(id === '1'){

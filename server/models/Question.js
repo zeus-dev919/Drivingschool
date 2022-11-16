@@ -50,7 +50,8 @@ const QuestionSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  timestamp: {}
-})
+},
+  { timestamps: true }
+)
 
 module.exports = mongoose.model(modelName, QuestionSchema)

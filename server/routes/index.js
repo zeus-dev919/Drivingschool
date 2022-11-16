@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 
-const testRoutes = require('./problem');
+const questionRoutes = require('./question');
 
-app.use('/problem', testRoutes)
+app.use('/problem', questionRoutes)
 
 module.exports = app

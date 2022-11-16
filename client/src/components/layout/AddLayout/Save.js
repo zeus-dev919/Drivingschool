@@ -1,14 +1,14 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
-import { saveImage } from '../../../apis/test'
+import { saveTest } from '../../../apis/test'
 
 const SaveButton = () => {
   const questions = useSelector(state => state.testReducer.questions)
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (questions.length) {
-      const res = await saveImage(questions)
+      const res = await saveTest(questions)
       console.log('res: ', res);
       toast.success(`Totalmente ${questions.length} de preguntas guardadas`)
     }

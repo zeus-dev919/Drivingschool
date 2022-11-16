@@ -7,7 +7,6 @@ const Star = ({ name = '', star_id, difficulty, setDifficulty }) => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const onChange = (e) => {
-    console.log(star_id)
     if (e.target.checked === true) {
       setDifficulty(star_id)
       const data = {
@@ -66,11 +65,11 @@ const Difficulty = () => {
         difficultad
       </div>
       <>
-      <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={1} name='1 star' />
-      <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={2} name='2 star' />
-      <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={3} name='3 star' />
-      <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={4} name='4 star' />
-      <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={5} name='5 star' />
+        <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={1} name='1 star' />
+        <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={2} name='2 star' />
+        <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={3} name='3 star' />
+        <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={4} name='4 star' />
+        <Star difficulty={difficulty} setDifficulty={setDifficulty} star_id={5} name='5 star' />
       </>
     </div>
   )
