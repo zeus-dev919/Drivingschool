@@ -1,69 +1,56 @@
 import {
-  INSERT_QUESTION_ANSWER,
-  INSERT_QUESTION_CATEGORY,
-  INSERT_QUESTION_CHOICES,
-  INSERT_QUESTION_DIFFICULTY,
-  INSERT_QUESTION_IMAGE,
-  INSERT_QUESTION_TEMA,
-  INSERT_QUESTION_TITLE,
-  INSERT_QUESTION_VIDEO,
+  GET_TESTS,
+  GET_QUESTIONS,
+  UPDATE_QUESTIONS,
+  CLEAR_QUESTIONS,
+  CLEAR_TESTS,
+  LOADING
 } from "../actions/constants"
 
-const question = {
-  title: '',
-  image: null,
-  video: null,
-  choices: [],
-  answer: '',
-  difficulty: '',
-  tema: '',
-  category: '',
+const initialState = {
+  questions: [],
+  tests: [],
+  loading: false,
 }
 
-const questionReducer = (state = question, action) => {
-  switch (action.type) {
-    case INSERT_QUESTION_TITLE:
+const questionReducer = (state = initialState, action) => {
+  const { type, payload } = action
+  switch (type) {
+    case LOADING:
       return {
-        ...question,
-        title: action.payload
+        ...state,
+        loading: true
       }
-    case INSERT_QUESTION_IMAGE:
+    case GET_TESTS:
       return {
-        ...question,
-        image: action.payload
+        ...state,
+        tests: payload,
+        loading: false
       }
-    case INSERT_QUESTION_CHOICES:
+    case GET_QUESTIONS:
       return {
-        ...question,
-        choices: action.payload
+        ...state,
+        questions: payload,
+        loading: false
       }
-    case INSERT_QUESTION_ANSWER:
+    case UPDATE_QUESTIONS:
       return {
-        ...question,
-        answer: action.payload
+        ...state,
+        questions: payload,
+        loading: false,
       }
-    case INSERT_QUESTION_TEMA:
+    case CLEAR_QUESTIONS:
       return {
-        ...question,
-        tema: action.payload
+        ...state,
+        questions: []
       }
-    case INSERT_QUESTION_CATEGORY:
+    case CLEAR_TESTS:
       return {
-        ...question,
-        category: action.payload
-      }
-    case INSERT_QUESTION_DIFFICULTY:
-      return {
-        ...question,
-        difficulty: action.payload
-      }
-    case INSERT_QUESTION_VIDEO:
-      return {
-        ...question,
-        video: action.payload
+        ...state,
+        tests: []
       }
     default:
-      return question
+      return state
   }
 }
 

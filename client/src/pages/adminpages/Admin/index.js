@@ -9,6 +9,7 @@ const Admin = () => {
     const response = await read();
     setTests(response)
   }
+  
   useEffect(() => {
     readData()
   }, [])

@@ -1,10 +1,23 @@
 import React from 'react'
 import toast from 'react-hot-toast'
+import { deleteTest, readTest } from '../../../apis/test';
+import { useNavigate } from 'react-router-dom';
 
 const TestRow = ({ num = '', count = '' }) => {
+  const navigate = useNavigate()
   let number = '';
   if (num < 10)
     number = '0' + num;
+
+  const handleDeleteClick = async() => {
+    const response = await deleteTest(num)
+    toast.success(response)
+  }
+
+  const handleEditClick = async() => {
+    await readTest(num);
+    navigate('/edit')
+  }
 
   return (
     <div className='flex flex-row w-full shadow-xl px-10 py-3 justify-between items-center mb-4 bg-[#FBFBFB]'>
@@ -24,10 +37,10 @@ const TestRow = ({ num = '', count = '' }) => {
       </div>
       <div className='text-gray-500 text-xl'>Preguntas: {count}</div>
       <div className='flex flex-row items-center gap-3'>
-        <div className='w-11 h-11 px-3 py-3 rounded-md text-center flex flex-row justify-center cursor-pointer bg-[#DB3546]' onClick={() => toast.success('Esto se implementará después del trabajo de la base de datos..')}>
+        <div className='w-11 h-11 px-3 py-3 rounded-md text-center flex flex-row justify-center cursor-pointer bg-[#DB3546]' onClick={handleDeleteClick}>
           <img src='/assets/icons/Delete1.png' alt='delete' />
         </div>
-        <div className='w-11 h-11 px-3 py-3 rounded-md text-center flex flex-row justify-center cursor-pointer bg-[#1F74E3]' onClick={() => toast.success('Esto se implementará después del trabajo de la base de datos..')}>
+        <div className='w-11 h-11 px-3 py-3 rounded-md text-center flex flex-row justify-center cursor-pointer bg-[#1F74E3]' onClick={handleEditClick}>
           <img src='/assets/icons/Edit.png' alt='edit' />
         </div>
       </div>

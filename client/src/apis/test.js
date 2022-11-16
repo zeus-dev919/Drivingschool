@@ -57,8 +57,22 @@ const saveTest = async (questions) => {
 const read = async () => {
   const data = await axios.get('api/question/read');
   return data.data
-} 
+}
+
+const deleteTest = async (id) => {
+  const data = await axios.post(`api/question/deleteTest/${id}`);
+  console.log(data.data)
+  return data.data
+}
+
+const readTest = async (id) => {
+  const data = await axios.get(`api/question/read/${id}`)
+  console.log(data)
+}
+
 export {
   saveTest,
   read,
+  deleteTest,
+  readTest,
 }

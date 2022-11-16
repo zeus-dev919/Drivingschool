@@ -94,6 +94,7 @@ const read = async (req, res) => {
 
 const readTest = async (req, res) => {
   try {
+    console.log('test: ', req.params.id)
     const questions = await Question.find({ test: req.params.id })
     res.status(200).send(questions)
   }

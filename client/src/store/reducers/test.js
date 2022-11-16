@@ -3,15 +3,17 @@ import {
   UPDATE_QUESTION,
   DELETE_QUESTION,
   INITIALIZE_TEST,
+  LOADING
 } from "../actions/constants"
 
-const initialState = { questions: [] };
+const initialState = { 
+  questions: []
+};
 
-const testReducer = (state = { questions: [] }, action) => {
+const testReducer = (state = { questions: []}, action) => {
   switch (action.type) {
     case INITIALIZE_TEST:
       return initialState
-
     case INSERT_QUESTION:
       const { id, property, value } = action.payload;
       const index = id - 1;
