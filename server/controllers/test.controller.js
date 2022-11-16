@@ -29,9 +29,15 @@ const details = async (req, res) => {
     });
   }
 }
+
 const add = async (req, res) => {
+  // console.log('-------------------------')
+  console.log('body: ', req.body)
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
   try {
-    console.log(req.file);
     res.send('file uploaded successfully.')
   }
   catch (error) {

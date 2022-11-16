@@ -5,9 +5,11 @@ dotenv.config()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const fileupload = require("express-fileupload");
 
 const port = process.env.PORT || 8080
 
+app.use(fileupload());
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))

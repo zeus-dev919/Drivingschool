@@ -2,22 +2,24 @@ const mongoose = require('mongoose')
 const modelName = 'Question'
 
 const QuestionSchema = new mongoose.Schema({
+  test: {
+    type: Number,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
   },
   image: {
     type: String,
-    default: null,
+    default: '',
   },
   choices: [{
-    choice: {
-      type: String,
-      required: true,
-    }
+    type: String,
+    default: '',
   }],
   answer: {
-    type: String,
+    type: Number,
     required: true
   },
   tema: {
@@ -30,16 +32,23 @@ const QuestionSchema = new mongoose.Schema({
   },
   video: {
     type: String,
-    default: null,
+    default: '',
   },
   difficulty: {
     type: Number,
-    required: true,
     default: 0
   },
-  duration: {
-    type: Number,
-    required: false
+  killertest: {
+    type: Boolean,
+    default: false,
+  },
+  gemela: {
+    type: Boolean,
+    default: false,
+  },
+  newpregunta: {
+    type: Boolean,
+    default: false
   },
   timestamp: {}
 })
