@@ -3,6 +3,6 @@ const app = express()
 
 const questionRoutes = require('./question');
 
-app.use('/problem', questionRoutes)
+app.use('/question', questionRoutes)
 
 module.exports = app

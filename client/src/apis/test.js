@@ -42,7 +42,7 @@ const saveTest = async (questions) => {
   }
 
   try {
-    const result = await axios.post('api/problem/add', formData, {
+    const result = await axios.post('api/question/add', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -54,6 +54,11 @@ const saveTest = async (questions) => {
   }
 }
 
+const read = async () => {
+  const data = await axios.get('api/question/read');
+  return data.data
+} 
 export {
   saveTest,
+  read,
 }

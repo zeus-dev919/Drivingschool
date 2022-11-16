@@ -4,9 +4,7 @@ import './sidebar.css'
 
 const Sidebar = () => {
   const navigate = useNavigate()
-  const handleClickAdd = () => {
-    navigate('/add')
-  }
+
   return (
     <div className='adminsidebar'>
       <div className='sidebar-container'>
@@ -16,7 +14,7 @@ const Sidebar = () => {
             <div className='sidebar-menu-item'>
               <img src='/assets/icons/Entradas.png' alt='entradas' />
             </div>
-            <div className='sidebar-menu-item' onClick={handleClickAdd}>
+            <div className='sidebar-menu-item'>
               <img src='/assets/icons/Group 120.png' alt='add test' />
               <img src='/assets/icons/Añadir test.png' alt='add test' />
             </div>

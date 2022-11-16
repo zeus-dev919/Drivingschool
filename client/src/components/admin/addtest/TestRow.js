@@ -1,11 +1,15 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 
-const TestRow = ({num=''}) => {
+const TestRow = ({ num = '', count = '' }) => {
+  let number = '';
+  if (num < 10)
+    number = '0' + num;
+
   return (
     <div className='flex flex-row w-full shadow-xl px-10 py-3 justify-between items-center mb-4 bg-[#FBFBFB]'>
       <div className='flex flex-row items-center justify-center w-14 h-14 bg-[#3598DB] rounded-xl text-white text-2xl font-bold'>
-        {num}
+        {number}
       </div>
       <div className='text-xl text-gray-500'>Test Oficiale de la DGT</div>
       <div className='flex flex-row gap-3 items-center'>
@@ -18,7 +22,7 @@ const TestRow = ({num=''}) => {
           <img src='/assets/icons/star2.png' alt='star' />
         </div>
       </div>
-      <div className='text-gray-500 text-xl'>Preguntas:30</div>
+      <div className='text-gray-500 text-xl'>Preguntas: {count}</div>
       <div className='flex flex-row items-center gap-3'>
         <div className='w-11 h-11 px-3 py-3 rounded-md text-center flex flex-row justify-center cursor-pointer bg-[#DB3546]' onClick={() => toast.success('Esto se implementará después del trabajo de la base de datos..')}>
           <img src='/assets/icons/Delete1.png' alt='delete' />

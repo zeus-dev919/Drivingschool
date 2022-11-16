@@ -37,10 +37,10 @@ const add = async (req, res) => {
     let no;
 
     const test = await Test.findOne({}, {}, { sort: { 'createdAt': -1 } })
-    if(test){
+    if (test) {
       no = test.no + 1
     }
-    else{
+    else {
       no = 1
     }
     const newTest = new Test({
@@ -50,7 +50,7 @@ const add = async (req, res) => {
 
     await newTest.save()
 
-    for(let i = 0; i< total; i++){
+    for (let i = 0; i < total; i++) {
       const newQuestion = new Question({
         test: no,
         title: req.body[`title${i}`],
@@ -67,14 +67,92 @@ const add = async (req, res) => {
       })
       await newQuestion.save()
     }
-    res.send('Test saved successfully.')
+    res.status(200).send('Test saved successfully.')
   }
   catch (error) {
     res.status(400).send('Error while saving test. Try again later.')
   }
 }
 
+const read = async (req, res) => {
+  try {
+    const tests = await Test.find();
+    console.log(tests)
+    let data = []
+    for (let i = 0; i < tests.length; i++) {
+      data[i] = {
+        no: tests[i].no,
+        count: tests[i].count,
+      }
+    }
+    res.status(200).send(data)
+  }
+  catch (error) {
+    res.status(401).send(error)
+  }
+}
+
+const readTest = async (req, res) => {
+  try {
+    const questions = await Question.find({ test: req.params.id })
+    res.status(200).send(questions)
+  }
+  catch (error) {
+    res.status(400).send(error)
+  }
+}
+
+const updateTest = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const test = await Test.findOne({no: req.params.id})
+    const total = req.body.total
+    test.total = total
+    await test.save()
+    await Question.deleteMany({ test: req.params.id })
+
+    for (let i = 0; i < total; i++) {
+      const newQuestion = new Question({
+        test: req.params.id,
+        title: req.body[`title${i}`],
+        image: req.body[`image${i}`],
+        answer: req.body[`answer${i}`],
+        choices: req.body[`choices${i}`],
+        killertest: req.body[`killertest${i}`],
+        gemela: req.body[`gemela${i}`],
+        newpregunta: req.body[`newpregunta${i}`],
+        tema: req.body[`tema${i}`],
+        category: req.body[`category${i}`],
+        video: req.body[`video${i}`],
+        difficulty: req.body[`difficulty${i}`],
+      })
+      await newQuestion.save()
+    }
+    res.status(200).send('Test saved successfully.')
+
+  }
+  catch (error) {
+    res.status(401).send(error)
+  }
+}
+
+const deleteTest = async (req, res) => {
+  try {
+    console.log(req.params.id)
+    await Test.deleteOne({ no: req.params.id })
+    await Question.deleteMany({ test: req.params.id })
+    res.status(200).send('Successfully Deleted.')
+  }
+  catch (error) {
+    res.status(401).send(error)
+  }
+}
+
 module.exports = {
   details,
   add,
+  read,
+  readTest,
+  updateTest,
+  deleteTest,
 }
