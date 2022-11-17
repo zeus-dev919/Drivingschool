@@ -1,10 +1,12 @@
 import {
   GET_TESTS,
+  SET_INDEX,
   TEST_LOADING
 } from '../actions/constants'
 
 const initialState = {
   tests: [],
+  index: 0,
   loading: false
 }
 
@@ -17,6 +19,11 @@ const todoReducer = (state = initialState, action) => {
         tests: payload,
         loading: false
       }
+      case SET_INDEX:
+        return{
+          ...state,
+          index: payload
+        }
     case TEST_LOADING:
       return {
         ...state,

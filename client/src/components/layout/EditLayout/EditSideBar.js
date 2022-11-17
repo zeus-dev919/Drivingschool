@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import CreateButton from '../Common/Create'
-import SaveButton from './Save'
+import UpdateButton from './Update'
 import QuestionButton from '../Common/Question'
 import { useSelector, useDispatch } from 'react-redux'
 import { getProblems } from '../../../actions/problem'
 
-const AddSideBar = () => {
+const EditSideBar = () => {
   const { id } = useParams()
   const problems = useSelector(state => state.problemReducer.problems)
   const loading = useSelector(state => state.problemReducer.loading)
@@ -38,11 +38,11 @@ const AddSideBar = () => {
           {
             getQuestions()
           }
-          <SaveButton />
+          <UpdateButton/>
         </div>
       </div>
     </div>
   )
 }
 
-export default AddSideBar
+export default EditSideBar

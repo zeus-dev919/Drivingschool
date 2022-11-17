@@ -2,8 +2,9 @@ import React from 'react'
 import toast from 'react-hot-toast'
 import { deleteTest, readTest } from '../../../apis/test';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getTests } from '../../../actions/test';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTests, setIndex } from '../../../actions/test';
+import { getProblems } from '../../../actions/problem';
 
 const TestRow = ({ num = '', count = '' }) => {
   const navigate = useNavigate()
@@ -20,8 +21,9 @@ const TestRow = ({ num = '', count = '' }) => {
   }
 
   const handleEditClick = async () => {
-    await readTest(num);
-    navigate('/edit')
+    dispatch(setIndex(num))
+    await dispatch(getProblems(num));
+    navigate('/edit/1')
   }
 
   return (

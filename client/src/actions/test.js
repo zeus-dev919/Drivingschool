@@ -1,5 +1,6 @@
 import {
   GET_TESTS,
+  SET_INDEX,
   TEST_LOADING
 } from '../store/actions/constants'
 
@@ -11,6 +12,11 @@ const getTests = () => async dispatch => {
   dispatch({type: GET_TESTS, payload: tests})
 }
 
+const setIndex = (num) => dispatch => {
+  dispatch({type: SET_INDEX, payload: num})
+}
+
 export {
   getTests,
+  setIndex,
 }

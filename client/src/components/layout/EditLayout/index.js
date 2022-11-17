@@ -1,15 +1,15 @@
 import React from 'react'
 import MainAddPage from '../Common/MainPage'
-import AddSideBar from './AddSideBar'
+import EditSideBar from './EditSideBar'
 
-const AddLayout = () => {
+const EditLayout = () => {
 
   return (
     <form className='flex flex-row' encType='multipart/form-data'>
-        <AddSideBar />
-        <MainAddPage />
+      <EditSideBar />
+      <MainAddPage />
     </form>
   )
 }
 
-export default AddLayout 
+export default EditLayout 

@@ -34,7 +34,7 @@ const updateProblem = data => async dispatch => {
 const getProblems = (id) => async dispatch => {
   dispatch({ type: PROBLEM_LOADING })
   const problems = await readTest(id)
-  dispatch({ type: GET_PROBLEMS, action: problems })
+  dispatch({ type: GET_PROBLEMS, payload: problems })
 }
 
 const deleteProblem = id => async dispatch => {

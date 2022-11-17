@@ -17,7 +17,7 @@ const uploadImage = async (req, res, next) => {
           }
         });
       })
-    }))
+  }))
   next()
 }
 // const resizeImages = async (req, res, next) => {

@@ -7,6 +7,7 @@ import AdminLayout from '../components/layout/AdminLayout'
 import Admin from '../pages/adminpages/Admin'
 
 import AddLayout from '../components/layout/AddLayout';
+import EditLayout from '../components/layout/EditLayout';
 import QuestionPart from '../components/admin/QuestionPart';
 
 import UserLayout from '../components/layout/UserLayout';
@@ -31,6 +32,14 @@ export default function Router() {
     {
       path: '/add',
       element: <AddLayout />,
+      children: [
+        { path: '', element: <></> },
+        { path: ':id', element: <QuestionPart /> },
+      ]
+    },
+    {
+      path: '/edit',
+      element: <EditLayout />,
       children: [
         { path: '', element: <></> },
         { path: ':id', element: <QuestionPart /> },

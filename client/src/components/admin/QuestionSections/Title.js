@@ -7,12 +7,17 @@ const Title = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const problem = useSelector(state => state.problemReducer.problems[id - 1])
+
   const [title, setTitle] = useState('')
 
   useEffect(() => {
-    setTitle(problem.title)
-  }, [id])
-
+    if (problem) {
+      if (problem.title)
+        setTitle(problem.title)
+      else
+        setTitle('')
+    }
+  }, [id, problem])
 
   const onChange = (e) => {
     setTitle(e.target.value)

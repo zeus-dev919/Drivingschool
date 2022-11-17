@@ -10,8 +10,10 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
 
   useEffect(() => {
     if (problem) {
-      if (problem.choices)
+      if (problem.choices){
         setChoices(problem.choices)
+
+      }
       else
         setChoices(['', '', '', ''])
       if (problem.answer)

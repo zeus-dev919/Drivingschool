@@ -57,6 +57,61 @@ const saveTest = async (questions) => {
   }
 }
 
+const updateTest = async (id, problems) => {
+  let formData = new FormData()
+  formData.append('total', problems.length)
+
+  for (let i = 0; i < problems.length; i++) {
+    formData.append(
+      `id${i}`, problems[i].id
+    )
+    formData.append(
+      `title${i}`, problems[i].title
+    )
+    formData.append(
+      `image${i}`, problems[i].image
+    )
+    formData.append(
+      `answer${i}`, problems[i].answer
+    )
+    formData.append(
+      `choices${i}`, problems[i].choices
+    )
+    formData.append(
+      `killertest${i}`, problems[i].killertest
+    )
+    formData.append(
+      `gemela${i}`, problems[i].gemela
+    )
+    formData.append(
+      `newpregunta${i}`, problems[i].newpregunta
+    )
+    formData.append(
+      `tema${i}`, problems[i].tema
+    )
+    formData.append(
+      `category${i}`, problems[i].category
+    )
+    formData.append(
+      `video${i}`, problems[i].video
+    )
+    formData.append(
+      `difficulty${i}`, problems[i].difficulty
+    )
+  }
+  try {
+    const result = await axios.get(`api/question/updateTest/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    return result
+  }
+  catch (error) {
+    return error
+  }
+}
+
 const read = async () => {
   const data = await axios.get('api/question/read');
   return data.data
@@ -70,12 +125,15 @@ const deleteTest = async (id) => {
 
 const readTest = async (id) => {
   const data = await axios.get(`api/question/read/${id}`)
-  console.log(data)
+  return data.data
 }
+
+
 
 export {
   saveTest,
   read,
   deleteTest,
   readTest,
+  updateTest,
 }

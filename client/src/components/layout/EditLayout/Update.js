@@ -1,17 +1,18 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
-import { saveTest } from '../../../apis/test'
+import { updateTest } from '../../../apis/test'
 
-const SaveButton = () => {
+const UpdateButton = () => {
   const problems = useSelector(state => state.problemReducer.problems)
+  const id = useSelector(state => state.todoReducer.index)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (problems.length) {
-      console.log('problems: ', problems)
-     const res = await saveTest(problems)
-     console.log('res: ', res);
+      console.log('id: ', id)
+      const res = await updateTest(id, problems)
+      console.log('res: ', res);
       toast.success(`Totalmente ${problems.length} de preguntas guardadas`)
     }
     else {
@@ -26,4 +27,4 @@ const SaveButton = () => {
   )
 }
 
-export default SaveButton
+export default UpdateButton
