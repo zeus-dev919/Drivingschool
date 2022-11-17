@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { insertQuestion } from '../../../../store/actions/question'
 import { useParams } from 'react-router-dom'
+import { updateProblem } from '../../../../actions/problem'
 
 const Star = ({ name = '', star_id, difficulty, setDifficulty }) => {
   const { id } = useParams()
@@ -15,7 +15,7 @@ const Star = ({ name = '', star_id, difficulty, setDifficulty }) => {
         value: star_id
       }
 
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
     else {
       setDifficulty(0)
@@ -25,7 +25,7 @@ const Star = ({ name = '', star_id, difficulty, setDifficulty }) => {
         value: 0
       }
 
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
   }
   return (
@@ -46,18 +46,18 @@ const Star = ({ name = '', star_id, difficulty, setDifficulty }) => {
 const Difficulty = () => {
   const { id } = useParams()
   const [difficulty, setDifficulty] = useState(0)
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
 
   useEffect(() => {
-    if (question) {
-      if (question.difficulty)
-        setDifficulty(question.difficulty)
+    if (problem) {
+      if (problem.difficulty)
+        setDifficulty(problem.difficulty)
       else
         setDifficulty(0)
     }
     else
       setDifficulty(0)
-  }, [id, question])
+  }, [id, problem])
 
   return (
     <div className='ml-10 mt-16 text-left'>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { insertQuestion } from '../../../store/actions/question'
+import { updateProblem } from '../../../actions/problem'
+
 import { useParams } from 'react-router-dom'
 import { FileUploader } from 'react-drag-drop-files'
 
 
 const Image = () => {
   const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
 
   const dispatch = useDispatch()
   const [url, setUrl] = useState('')
@@ -21,19 +22,19 @@ const Image = () => {
       property: 'image',
       value: dropFile
     }
-    dispatch(insertQuestion(data))
+    dispatch(updateProblem(data))
   }
 
   useEffect(() => {
-    if (question) {
-      if (question.image)
-        setUrl(URL.createObjectURL(question.image))
+    if (problem) {
+      if (problem.image)
+        setUrl(URL.createObjectURL(problem.image))
       else
         setUrl('/assets/icons/Main Image.png')
     }
     else
       setUrl('/assets/icons/Main Image.png')
-  }, [id, question])
+  }, [id, problem])
 
   return (
     <div className='my-12 px-40'>

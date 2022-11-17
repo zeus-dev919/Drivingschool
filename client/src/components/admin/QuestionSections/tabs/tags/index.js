@@ -10,16 +10,16 @@ const TagsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('')
 
   const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
 
   useEffect(() => {
-    if (question) {
-      if (question.tema)
-        setSelectedTema(question.tema)
+    if (problem) {
+      if (problem.tema)
+        setSelectedTema(problem.tema)
       else
         setSelectedTema('')
-      if (question.category)
-        setSelectedCategory(question.category)
+      if (problem.category)
+        setSelectedCategory(problem.category)
       else
         setSelectedCategory('')
     }
@@ -27,7 +27,7 @@ const TagsSection = () => {
       setSelectedCategory('')
       setSelectedTema('')
     }
-  }, [id, question])
+  }, [id, problem])
 
   return (
     <div className='text-left'>

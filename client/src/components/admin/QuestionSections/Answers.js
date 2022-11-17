@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { insertQuestion } from '../../../store/actions/question'
 import { useParams } from 'react-router-dom'
+import { updateProblem } from '../../../actions/problem'
 
 const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choices, setChoices }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
 
   useEffect(() => {
-    if (question) {
-      if (question.choices)
-        setChoices(question.choices)
+    if (problem) {
+      if (problem.choices)
+        setChoices(problem.choices)
       else
         setChoices(['', '', '', ''])
-      if (question.answer)
-        setAnswer(question.answer)
+      if (problem.answer)
+        setAnswer(problem.answer)
       else
         setAnswer(0)
     }
@@ -23,7 +23,7 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
       setChoices(['', '', '', ''])
       setAnswer(0)
     }
-  }, [id, question])
+  }, [id, problem])
 
   const handleChange = (e) => {
     let newChoices = [...choices];
@@ -35,7 +35,7 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
       property: 'choices',
       value: choices
     }
-    dispatch(insertQuestion(data))
+    dispatch(updateProblem(data))
   }
 
   const handleCheckClick = (e) => {
@@ -46,7 +46,7 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
         property: 'answer',
         value: answer_id
       }
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
     else {
       setAnswer('')
@@ -55,7 +55,7 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
         property: 'answer',
         value: 0
       }
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
   }
 

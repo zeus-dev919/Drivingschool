@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { initializeTest } from '../../../store/actions/question'
+import { initializeProblems } from '../../../actions/problem'
 import { useDispatch } from 'react-redux'
 
 const AddButton = () => {
@@ -8,7 +8,7 @@ const AddButton = () => {
   const dispatch = useDispatch()
 
   const handleClick = () => {
-    dispatch(initializeTest())
+    dispatch(initializeProblems())
     navigate('/add');
   }
   return (

@@ -77,7 +77,6 @@ const add = async (req, res) => {
 const read = async (req, res) => {
   try {
     const tests = await Test.find();
-    console.log(tests)
     let data = []
     for (let i = 0; i < tests.length; i++) {
       data[i] = {

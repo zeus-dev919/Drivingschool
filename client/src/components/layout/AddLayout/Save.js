@@ -4,13 +4,15 @@ import { useSelector } from 'react-redux'
 import { saveTest } from '../../../apis/test'
 
 const SaveButton = () => {
-  const questions = useSelector(state => state.testReducer.questions)
+  const problems = useSelector(state => state.problemReducer.problems)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (questions.length) {
-      const res = await saveTest(questions)
-      console.log('res: ', res);
-      toast.success(`Totalmente ${questions.length} de preguntas guardadas`)
+    if (problems.length) {
+      console.log('problems: ', problems)
+  //    const res = await saveTest(problems)
+  //    console.log('res: ', res);
+      toast.success(`Totalmente ${problems.length} de preguntas guardadas`)
     }
     else {
       toast.error('No se puede guardar la prueba vacía. Haz al menos una pregunta.')

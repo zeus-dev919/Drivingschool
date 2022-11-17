@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 
 const Preview = () => {
   const location = useLocation();
-  const question = useSelector(state => state.testReducer.questions[location.state.id-1])
-  const [choices, setChoices] = useState(['','','',''])
-  useEffect(()=>{
-    if(question.choices)
-      setChoices(question.choices)
-  },[])
+  const problem = useSelector(state => state.problemReducer.problems[location.state.id - 1])
+  const [choices, setChoices] = useState(['', '', '', ''])
+  useEffect(() => {
+    if (problem.choices)
+      setChoices(problem.choices)
+  }, [])
   const navigate = useNavigate();
   let num;
   if (location.state.id < 10)
@@ -36,11 +36,11 @@ const Preview = () => {
       <div>
         <div className='flex flex-row w-full'>
           <div className='flex justify-center items-center w-1/2'>
-            <img className='px-20 py-40' src='/assets/icons/image2.png' alt='test_image' />
+            <img className='px-20 py-40' src={problem.image ? URL.createObjectURL(problem.image) : '/assets/icons/Main Image.png'} alt='test_image' />
           </div>
           <div className='flex flex-col gap-10 w-1/2 px-10'>
             <div className='mt-20 text-[32px] text-gray-500'>
-              {question.title}
+              {problem.title}
             </div>
             <div className='flex flex-row gap-10 items-center'>
               <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>A</div>
@@ -55,12 +55,12 @@ const Preview = () => {
               <div className='text-gray-500 text-[32px]'>{choices[2]}</div>
             </div>
             {
-              choices[3] === '' ? (<></>): (<div className='flex flex-row gap-10 items-center'>
-              <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>D</div>
-              <div className='text-gray-500 text-[32px]'>{choices[3]}</div>
-            </div>)
+              choices[3] === '' ? (<></>) : (<div className='flex flex-row gap-10 items-center'>
+                <div className='bg-[#3598DB] text-[32px] text-white px-5 py-10 rounded-xl cursor-pointer hover:bg-blue-300'>D</div>
+                <div className='text-gray-500 text-[32px]'>{choices[3]}</div>
+              </div>)
             }
-            
+
             <div className='flex flex-row gap-10 justify-center items-center'>
               <div className='flex flex-row rounded-xl px-10 py-5 items-center gap-5 text-white bg-[#3598DB] cursor-pointer hover:bg-blue-300' onClick={() => navigate(-1)}>
                 <FaChevronLeft />

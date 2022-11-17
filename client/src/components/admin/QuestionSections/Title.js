@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { insertQuestion } from '../../../store/actions/question'
 import { useParams } from 'react-router-dom'
+import { updateProblem } from '../../../actions/problem'
 
 const Title = () => {
-  const dispatch = useDispatch()
   const { id } = useParams()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const dispatch = useDispatch()
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
   const [title, setTitle] = useState('')
 
   useEffect(() => {
-    if (question) {
-      if (question.title)
-        setTitle(question.title)
-      else
-        setTitle('')
-    }
-    else {
-      setTitle('')
-    }
-  }, [id, question])
+    setTitle(problem.title)
+  }, [id])
+
 
   const onChange = (e) => {
     setTitle(e.target.value)
@@ -28,7 +21,7 @@ const Title = () => {
       property: 'title',
       value: e.target.value
     }
-    dispatch(insertQuestion(data))
+    dispatch(updateProblem(data))
   }
 
   return (

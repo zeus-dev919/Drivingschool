@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { deleteQuestion } from '../../../store/actions/question';
+import { getProblem, updateProblems, deleteProblem } from '../../../actions/problem';
 
 import toast from 'react-hot-toast'
 
@@ -15,21 +15,13 @@ const QuestionButton = ({ q_id = '', selectedIndex, setSelectedIndex, lists, set
   }
 
   const deleteButtonClick = async () => {
-    const data = {
-      id: q_id
-    }
-    await toast.promise(dispatch(deleteQuestion(data)),
-      {
-        loading: 'deleting',
-        success: 'success',
-        error: 'failed'
-      })
+    dispatch(deleteProblem(q_id))
     setLists(lists - 1)
   }
 
   const viewButtonClick = (e) => {
     e.stopPropagation();
-    navigate('/preview', {state: {id: q_id, total: lists}})
+    navigate('/preview', {state: {id: q_id }})
   }
 
   return (

@@ -7,37 +7,40 @@ const saveTest = async (questions) => {
 
   for (let i = 0; i < questions.length; i++) {
     formData.append(
-      `title${i}`, questions[i].title ? questions[i].title : ''
+      `id${i}`, questions[i].id
     )
     formData.append(
-      `image${i}`, questions[i].image ? questions[i].image : ''
+      `title${i}`, questions[i].title
     )
     formData.append(
-      `answer${i}`, questions[i].answer ? questions[i].answer : ''
+      `image${i}`, questions[i].image
     )
     formData.append(
-      `choices${i}`, questions[i].choices ? questions[i].choices : ['', '', '', '']
+      `answer${i}`, questions[i].answer
     )
     formData.append(
-      `killertest${i}`, questions[i].killertest ? questions[i].killertest : false
+      `choices${i}`, questions[i].choices
     )
     formData.append(
-      `gemela${i}`, questions[i].gemela ? questions[i].gemela : false
+      `killertest${i}`, questions[i].killertest
     )
     formData.append(
-      `newpregunta${i}`, questions[i].newpregunta ? questions[i].newpregunta : false
+      `gemela${i}`, questions[i].gemela
     )
     formData.append(
-      `tema${i}`, questions[i].tema ? questions[i].tema : ''
+      `newpregunta${i}`, questions[i].newpregunta
     )
     formData.append(
-      `category${i}`, questions[i].category ? questions[i].category : ''
+      `tema${i}`, questions[i].tema
     )
     formData.append(
-      `video${i}`, questions[i].video ? questions[i].video : ''
+      `category${i}`, questions[i].category
     )
     formData.append(
-      `difficulty${i}`, questions[i].difficulty ? questions[i].difficulty : 0
+      `video${i}`, questions[i].video
+    )
+    formData.append(
+      `difficulty${i}`, questions[i].difficulty
     )
   }
 

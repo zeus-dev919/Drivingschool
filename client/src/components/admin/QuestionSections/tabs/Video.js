@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { insertQuestion } from '../../../../store/actions/question'
+import { updateProblem } from '../../../../actions/problem'
+
 import { toast } from 'react-hot-toast'
 
 const Video = () => {
   const { id } = useParams();
   const dispatch = useDispatch()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
   const [video, setVideo] = useState('')
 
   useEffect(() => {
-    if (question) {
-      if (question.video)
-        setVideo(question.video)
+    if (problem) {
+      if (problem.video)
+        setVideo(problem.video)
       else
         setVideo('')
     }
     else
       setVideo('')
-  }, [id, question])
+  }, [id, problem])
 
   const onChange = (e) => {
     setVideo(e.target.value)
-    
+
   }
 
   const onSaveClick = (e) => {
-    if (video.startsWith('https://vimeo.com/')){
+    if (video.startsWith('https://vimeo.com/')) {
       const data = {
         id: id,
         property: 'video',
         value: video
       }
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
       toast.success('Will save successfully.')
     }
     else

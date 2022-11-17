@@ -2,19 +2,24 @@ import React from 'react'
 import toast from 'react-hot-toast'
 import { deleteTest, readTest } from '../../../apis/test';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getTests } from '../../../actions/test';
 
 const TestRow = ({ num = '', count = '' }) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   let number = '';
   if (num < 10)
     number = '0' + num;
 
-  const handleDeleteClick = async() => {
+  const handleDeleteClick = async () => {
     const response = await deleteTest(num)
+    dispatch(getTests())
     toast.success(response)
   }
 
-  const handleEditClick = async() => {
+  const handleEditClick = async () => {
     await readTest(num);
     navigate('/edit')
   }

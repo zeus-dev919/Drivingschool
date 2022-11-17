@@ -3,7 +3,6 @@ import {
   UPDATE_QUESTION,
   DELETE_QUESTION,
   INITIALIZE_TEST,
-  LOADING
 } from "../actions/constants"
 
 const initialState = { 

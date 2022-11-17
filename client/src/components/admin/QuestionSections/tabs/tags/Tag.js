@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { insertQuestion } from '../../../../../store/actions/question'
+import { updateProblem } from '../../../../../actions/problem'
+
 import { useParams } from 'react-router-dom'
 
 const Tag = ({ name = '', tag_id = '' }) => {
   const { id } = useParams();
   const [checked, setChecked] = useState(false)
   const dispatch = useDispatch()
-  const question = useSelector(state => state.testReducer.questions[id - 1])
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
 
   const onChange = (e) => {
     setChecked(e.target.checked)
@@ -16,19 +17,19 @@ const Tag = ({ name = '', tag_id = '' }) => {
       property: tag_id,
       value: e.target.checked
     }
-    dispatch(insertQuestion(data))
+    dispatch(updateProblem(data))
   }
 
   useEffect(() => {
-    if (question) {
-      if (question[tag_id])
-        setChecked(question[tag_id])
+    if (problem) {
+      if (problem[tag_id])
+        setChecked(problem[tag_id])
       else
         setChecked(false)
     }
     else
       setChecked(false)
-  }, [id, question])
+  }, [id, problem])
 
   return (
     <>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { insertQuestion } from '../../../../../store/actions/question'
+import { updateProblem } from '../../../../../actions/problem'
+
 import { useParams } from 'react-router-dom'
 import Category from './Category'
 
@@ -16,7 +17,7 @@ const Tema = ({ tema = {}, selectedTema, setSelectedTema, selectedCategory, setS
         property: 'tema',
         value: ''
       }
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
     else {
       setSelectedTema(tema.id);
@@ -25,7 +26,7 @@ const Tema = ({ tema = {}, selectedTema, setSelectedTema, selectedCategory, setS
         property: 'tema',
         value: tema.id
       }
-      dispatch(insertQuestion(data))
+      dispatch(updateProblem(data))
     }
 
     setSelectedCategory('')
@@ -34,7 +35,7 @@ const Tema = ({ tema = {}, selectedTema, setSelectedTema, selectedCategory, setS
       property: 'category',
       value: ''
     }
-    dispatch(insertQuestion(data1))
+    dispatch(updateProblem(data1))
   }
 
   return (

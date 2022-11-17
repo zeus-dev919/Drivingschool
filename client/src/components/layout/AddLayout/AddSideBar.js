@@ -3,29 +3,25 @@ import { useNavigate, useParams } from 'react-router-dom'
 import CreateButton from './Create'
 import SaveButton from './Save'
 import QuestionButton from './Question'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProblems } from '../../../actions/problem'
 
 const AddSideBar = () => {
-  const questions = useSelector(state => state.testReducer.questions)
+  const {id} = useParams()
+  const problems = useSelector(state => state.problemReducer.problems)
+  const loading = useSelector(state => state.problemReducer.loading)
+
   const [lists, setLists] = useState(0)
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const navigate = useNavigate()
-  const { id } = useParams()
 
   useEffect(() => {
-    if (questions) {
-      if (questions.length === 0){
-        if(id === '1'){
-          setLists(1)
-          setSelectedIndex(1)
-        }
-      }
-      else{
-        setLists(questions.length)
-        setSelectedIndex(Number(id))
-      }
-    }
-  }, [])
+    setLists(problems.length)
+    setSelectedIndex(Number(id))
+  }, [loading])
+
+  // useEffect(() => {
+  //   setLists(problems.length)
+  // }, [loading])
 
   const getQuestions = () => {
     const result = [];
