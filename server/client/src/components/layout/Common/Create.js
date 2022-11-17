@@ -27,10 +27,26 @@ const CreateButton = ({ lists, setLists, selectedIndex, setSelectedIndex }) => {
   }
 
   const handleClick = () => {
-    dispatch(addProblem(newProblem))
-    setLists(lists + 1)
-    setSelectedIndex(lists + 1)
-    navigate(`${lists + 1}`)
+    if(problems.length !== 0){
+      const res = isFill(problems[problems.length - 1])
+      console.log(res)
+      if (res.isFull) {
+        dispatch(addProblem(newProblem))
+        setLists(lists + 1)
+        setSelectedIndex(lists + 1)
+        navigate(`${lists + 1}`)
+      }
+      else {
+        toast.error(`Please Fill the Following Sections: ${res.details}`)
+      }
+    }
+    else{
+      dispatch(addProblem(newProblem))
+      setLists(lists + 1)
+      setSelectedIndex(lists + 1)
+      navigate(`${lists + 1}`)
+    }
+    
   }
     // if (questions.length === 0){
     //   console.log(questions.length)

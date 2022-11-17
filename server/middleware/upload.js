@@ -1,24 +1,31 @@
 const uploadImage = async (req, res, next) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
+
+  // if (!req.files || Object.keys(req.files).length === 0) {
+  //   return res.status(400).send('No files were uploaded.');
+  // }
+  if (req.files && Object.keys(req.files).length !== 0) {
+    await Promise.all(
+      Object.keys(req.files).map(async (key) => {
+        return new Promise(async (resolve) => {
+          const file = req.files[key]
+          const suffixUrl = `/assets/imgs/${Date.now()}-driving-${file.name}`
+          const path = `${__dirname}/../client/public${suffixUrl}`
+          await file.mv(path, (err) => {
+            if (err) {
+              return res.status(500).send(err);
+            }
+            else {
+              req.body[key] = suffixUrl
+              resolve(true);
+            }
+          });
+        })
+      }))
+    next()
   }
-  await Promise.all(
-    Object.keys(req.files).map(async (key) => {
-      return new Promise(async (resolve) => {
-        const file = req.files[key]
-        const path = `${__dirname}/../files/${Date.now()}-bezkoder-${file.name}`
-        await file.mv(path, (err) => {
-          if (err) {
-            return res.status(500).send(err);
-          }
-          else {
-            req.body[key] = path
-            resolve(true);
-          }
-        });
-      })
-  }))
-  next()
+  else{
+    next()
+  }
 }
 // const resizeImages = async (req, res, next) => {
 //   if (!req.files) return next();

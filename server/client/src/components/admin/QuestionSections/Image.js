@@ -28,8 +28,9 @@ const Image = () => {
   useEffect(() => {
     if (problem) {
       if (problem.image){
-        // setUrl(URL.createObjectURL(problem.image))
-        console.log(problem.image)
+        if(typeof(problem.image) === 'object')
+         setUrl(URL.createObjectURL(problem.image))
+        else
         setUrl(problem.image)
       }
       else
@@ -47,7 +48,7 @@ const Image = () => {
         types={fileTypes}
         children={
           <div className='flex flex-col justify-center items-center'>
-            <img src={url} alt='mainImage' className='-mb-14' multiple='true'/>
+            <img src={url} alt='mainImage' className='-mb-14'/>
             <div>
               <img className='cursor-pointer inline-block' src='/assets/icons/Upload Cloud.png' htmlFor='upload' alt='uploadImage' />
               <div>Drag and Drop or <label htmlFor='upload' className='text-[#3A63DE] cursor-pointer'>Browse</label> to upload</div>

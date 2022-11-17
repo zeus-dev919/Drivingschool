@@ -8,9 +8,22 @@ const Preview = () => {
   const location = useLocation();
   const problem = useSelector(state => state.problemReducer.problems[location.state.id - 1])
   const [choices, setChoices] = useState(['', '', '', ''])
+  const [url, setUrl] = useState('')
   useEffect(() => {
     if (problem.choices)
       setChoices(problem.choices)
+
+    console.log(typeof (problem.image))
+    if (problem.image)
+      if (typeof (problem.image) === 'object') {
+        console.log('iiihere')
+        URL.createObjectURL(problem.image)
+        setUrl(URL.createObjectURL(problem.image))
+      }
+      else {
+        setUrl(problem.image)
+      }
+
   }, [])
   const navigate = useNavigate();
   let num;
@@ -36,7 +49,7 @@ const Preview = () => {
       <div>
         <div className='flex flex-row w-full'>
           <div className='flex justify-center items-center w-1/2'>
-            <img className='px-20 py-40' src={problem.image ? URL.createObjectURL(problem.image) : '/assets/icons/Main Image.png'} alt='test_image' />
+            <img className='px-20 py-40' src={problem.image ? url : '/assets/icons/Main Image.png'} alt='test_image' />
           </div>
           <div className='flex flex-col gap-10 w-1/2 px-10'>
             <div className='mt-20 text-[32px] text-gray-500'>

@@ -2,10 +2,11 @@ import axios from '../utils/axios'
 
 const saveTest = async (questions) => {
 
+  console.log('questions: ', questions)
   let formData = new FormData()
   formData.append('total', questions.length)
-
   for (let i = 0; i < questions.length; i++) {
+
     formData.append(
       `id${i}`, questions[i].id
     )
@@ -61,6 +62,7 @@ const updateTest = async (id, problems) => {
   let formData = new FormData()
   formData.append('total', problems.length)
 
+  console.log('problems: ', problems)
   for (let i = 0; i < problems.length; i++) {
     formData.append(
       `id${i}`, problems[i].id
@@ -100,7 +102,7 @@ const updateTest = async (id, problems) => {
     )
   }
   try {
-    const result = await axios.get(`api/question/updateTest/${id}`, formData, {
+    const result = await axios.post(`api/question/updateTest/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

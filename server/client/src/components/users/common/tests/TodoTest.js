@@ -6,6 +6,8 @@ const TodoTest = props => {
   let number
   if (props.test.no < 10)
     number = '0' + props.test.no
+  else
+    number = '' + props.test.no
   const onClick = () => {
     setShowModal(true)
   }

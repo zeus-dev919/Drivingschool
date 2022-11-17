@@ -13,7 +13,8 @@ const TestRow = ({ num = '', count = '' }) => {
   let number = '';
   if (num < 10)
     number = '0' + num;
-
+  else
+    number = '' + num
   const handleDeleteClick = async () => {
     const response = await deleteTest(num)
     dispatch(getTests())

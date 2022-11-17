@@ -6,26 +6,6 @@ import { updateProblem } from '../../../actions/problem'
 const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choices, setChoices }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
-  const problem = useSelector(state => state.problemReducer.problems[id - 1])
-
-  useEffect(() => {
-    if (problem) {
-      if (problem.choices){
-        setChoices(problem.choices)
-
-      }
-      else
-        setChoices(['', '', '', ''])
-      if (problem.answer)
-        setAnswer(problem.answer)
-      else
-        setAnswer(0)
-    }
-    else {
-      setChoices(['', '', '', ''])
-      setAnswer(0)
-    }
-  }, [id, problem])
 
   const handleChange = (e) => {
     let newChoices = [...choices];
@@ -81,6 +61,28 @@ const AnswerField = ({ placeholder = '', answer_id = '', answer, setAnswer, choi
 const Answers = () => {
   const [choices, setChoices] = useState(['', '', '', ''])
   const [answer, setAnswer] = useState(0)
+
+  const { id } = useParams()
+  const problem = useSelector(state => state.problemReducer.problems[id - 1])
+
+  useEffect(() => {
+    if (problem) {
+      if (problem.choices) {
+        setChoices(problem.choices)
+
+      }
+      else
+        setChoices(['', '', '', ''])
+      if (problem.answer)
+        setAnswer(problem.answer)
+      else
+        setAnswer(0)
+    }
+    else {
+      setChoices(['', '', '', ''])
+      setAnswer(0)
+    }
+  }, [id, problem])
 
   return (
     <>

@@ -28,14 +28,13 @@ const details = async (req, res) => {
       status: "error",
       message: "Server Error",
     });
-  }
+  } 
 }
 
 const add = async (req, res) => {
   try {
     const total = req.body.total;
     let no;
-
     const test = await Test.findOne({}, {}, { sort: { 'createdAt': -1 } })
     if (test) {
       no = test.no + 1
@@ -51,12 +50,16 @@ const add = async (req, res) => {
     await newTest.save()
 
     for (let i = 0; i < total; i++) {
+      const choices = req.body[`choices${i}`];
+      const choiceArray = choices.split(',')
+
       const newQuestion = new Question({
         test: no,
+        id: req.body[`id${i}`],
         title: req.body[`title${i}`],
         image: req.body[`image${i}`],
         answer: req.body[`answer${i}`],
-        choices: req.body[`choices${i}`],
+        choices: choiceArray,
         killertest: req.body[`killertest${i}`],
         gemela: req.body[`gemela${i}`],
         newpregunta: req.body[`newpregunta${i}`],
@@ -65,6 +68,8 @@ const add = async (req, res) => {
         video: req.body[`video${i}`],
         difficulty: req.body[`difficulty${i}`],
       })
+      console.log('i: ', i)
+      console.log('total: ', total)
       await newQuestion.save()
     }
     res.status(200).send('Test saved successfully.')
@@ -93,7 +98,6 @@ const read = async (req, res) => {
 
 const readTest = async (req, res) => {
   try {
-    console.log('test: ', req.params.id)
     const questions = await Question.find({ test: req.params.id })
     res.status(200).send(questions)
   }
@@ -104,20 +108,23 @@ const readTest = async (req, res) => {
 
 const updateTest = async (req, res) => {
   try {
-    console.log(req.params.id);
-    const test = await Test.findOne({no: req.params.id})
+    const test = await Test.findOne({ no: req.params.id })
     const total = req.body.total
-    test.total = total
+    test.count = total
     await test.save()
     await Question.deleteMany({ test: req.params.id })
 
     for (let i = 0; i < total; i++) {
+      const choices = req.body[`choices${i}`];
+      const choiceArray = choices.split(',')
+
       const newQuestion = new Question({
         test: req.params.id,
+        id: req.body[`id${i}`],
         title: req.body[`title${i}`],
         image: req.body[`image${i}`],
         answer: req.body[`answer${i}`],
-        choices: req.body[`choices${i}`],
+        choices: choiceArray,
         killertest: req.body[`killertest${i}`],
         gemela: req.body[`gemela${i}`],
         newpregunta: req.body[`newpregunta${i}`],
@@ -138,7 +145,6 @@ const updateTest = async (req, res) => {
 
 const deleteTest = async (req, res) => {
   try {
-    console.log(req.params.id)
     await Test.deleteOne({ no: req.params.id })
     await Question.deleteMany({ test: req.params.id })
     res.status(200).send('Successfully Deleted.')
@@ -148,6 +154,18 @@ const deleteTest = async (req, res) => {
   }
 }
 
+const readbyId = async ( req, res) => {
+  try{
+    const id = req.params.id;
+    
+    res.status(200).send('hello')
+  }
+  catch(error){
+    res.status(401).send(error)
+  }
+  
+}
+
 module.exports = {
   details,
   add,
@@ -155,4 +173,5 @@ module.exports = {
   readTest,
   updateTest,
   deleteTest,
+  readbyId,
 }

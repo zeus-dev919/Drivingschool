@@ -6,6 +6,10 @@ const QuestionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  id: {
+    type: Number,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -14,10 +18,7 @@ const QuestionSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  choices: [{
-    type: String,
-    default: '',
-  }],
+  choices: [],
   answer: {
     type: Number,
     required: true
